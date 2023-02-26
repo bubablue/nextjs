@@ -3,7 +3,6 @@ import { TeamLogo } from "../../Components/TeamLogo";
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@material-ui/core";
 import { createStyles } from "@material-ui/core/styles";
-// import useStyles from "./Styles";
 
 const Dashboard = () => {
   const NHL_URL = "https://statsapi.web.nhl.com/api/v1/teams";
