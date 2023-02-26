@@ -4691,6 +4691,11 @@ eslint-plugin-react-hooks@^4.3.0, eslint-plugin-react-hooks@^4.5.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.0.tgz#4c3e697ad95b77e93f8646aaa1630c1ba607edd3"
   integrity sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==
 
+eslint-plugin-react-hooks@^5.0.0-next-bfb9cbd8c-20230223:
+  version "5.0.0-next-bfb9cbd8c-20230223"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.0.0-next-bfb9cbd8c-20230223.tgz#dd5f878effaa34899c9830132742bb933fde446d"
+  integrity sha512-ZWOv/CUjoHPwl+HP3gnoYcxq9qiyHp8snW5lumJsF+X5Oyku5x/cL+r0J910TRvxbbJEjsNij+ygDWKqmM4Ktg==
+
 eslint-plugin-react@^7.27.1, eslint-plugin-react@^7.31.7:
   version "7.32.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.32.2.tgz#e71f21c7c265ebce01bcbc9d0955170c55571f10"
@@ -8337,7 +8342,7 @@ react-bootstrap-icons@^1.10.2:
   dependencies:
     prop-types "^15.7.2"
 
-react-bootstrap@^2.7.0:
+react-bootstrap@^2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/react-bootstrap/-/react-bootstrap-2.7.2.tgz#100069ea7b4807cccbc5fef1e33bc90283262602"
   integrity sha512-WDSln+mG4RLLFO01stkj2bEx/3MF4YihK9D/dWnHaSxOiQZLbhhlf95D2Jb20X3t2m7vMxRe888FVrfLJoGmmA==
@@ -8437,7 +8442,7 @@ react-refresh@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@^6.8.0:
+react-router-dom@^6.8.1:
   version "6.8.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.8.1.tgz#7e136b67d9866f55999e9a8482c7008e3c575ac9"
   integrity sha512-67EXNfkQgf34P7+PSb6VlBuaacGhkKn3kpE51+P6zYSG2kiRoumXEL6e27zTa9+PGF2MNXbgIUHTVlleLbIcHQ==
