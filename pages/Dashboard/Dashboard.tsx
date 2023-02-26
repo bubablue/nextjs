@@ -15,6 +15,16 @@ const Dashboard = () => {
     console.log(data);
   };
 
+  const useStyles = makeStyles((_theme: Theme) => {
+    return createStyles({
+      images: {
+        width: "100px",
+        height: "100px",
+      },
+    });
+  });
+  const classes = useStyles();
+
   React.useEffect(() => {
     getTeams();
   }, []);
@@ -28,7 +38,7 @@ const Dashboard = () => {
             <h2>{team.name}</h2>
             <p>{team.venue.name}</p>
             <TeamLogo
-              classProp="team-logo"
+              classProp={classes.images}
               team={team.name}
               teamId={team.id}
             />
