@@ -1,6 +1,6 @@
 // import '@/styles/globals.css'
 
-import { Dashboard } from "./Dashboard/Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 
 export default function App({ Component, pageProps }) {
   // return <Component {...pageProps} />
