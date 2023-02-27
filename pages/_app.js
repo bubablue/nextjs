@@ -67,9 +67,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <TeamsProvider state={state}>
+      <Sidebar logout={logOut} />
       <NhlThemeProvider>
         <Component {...pageProps} />
       </NhlThemeProvider>
+      <UserSidebar />
     </TeamsProvider>
   );
 }
