@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preci": "rm -fr node_modules",
+    "ci": "yarn install --frozen-lockfile"
   },
   "dependencies": {
     "@babel/compat-data": "7.19.4",

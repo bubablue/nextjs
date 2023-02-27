@@ -137,8 +137,6 @@ export const Sidebar = (props: Props) => {
     setMode(mode === "light" ? "dark" : "light");
   };
 
-  console.log(state)
-
   return (
     <Navbar
       bg="dark"
