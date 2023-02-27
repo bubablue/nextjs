@@ -23,7 +23,7 @@ import Colours from "../../Context/Theme/Colours";
 import { Theme } from "@mui/material/styles";
 
 interface Props {
-  logout: React.MouseEventHandler<HTMLButtonElement> | undefined;
+  logout?: React.MouseEventHandler<HTMLButtonElement> | undefined;
   children?: React.ReactNode;
 }
 const useStyles = makeStyles((_theme) =>

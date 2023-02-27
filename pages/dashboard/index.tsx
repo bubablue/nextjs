@@ -6,6 +6,7 @@ import { createStyles } from "@material-ui/core";
 import Colours from "../../Context/Theme/Colours";
 import { Theme } from "@mui/material/styles";
 import { useRouter } from "next/router";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
@@ -69,7 +70,7 @@ const useStyles = makeStyles((theme: Theme) => {
 const Dashboard = () => {
   const NHL_URL = "https://statsapi.web.nhl.com/api/v1/teams";
   const [teams, setTeams] = React.useState<any>([]);
-const router = useRouter();
+  const router = useRouter();
   const getTeams = async () => {
     const response = await fetch(NHL_URL);
     const data = await response.json();
@@ -87,30 +88,33 @@ const router = useRouter();
   };
 
   return (
-    <div className={classes.root}>
-      <h1 className={classes.header} onClick={handleClick}>
-        NHL TEAMS
-      </h1>
-      <div className={classes.teams}>
-        {teams?.map((team) => (
-          <div className={classes.team} key={team.shortName}>
-            {/* <a key={team.name} className={classes.names} href={team.officialSiteUrl}> */}
-            <a
-              key={team.name}
-              className={classes.names}
-              href={`/teams/${team.id}/stats`}
-            >
-              <TeamLogo
-                classProp={classes.images}
-                team={team.name}
-                teamId={team.id}
-              />
-              {team.name}
-            </a>
-          </div>
-        ))}
+    <>
+    <Sidebar/>
+      <div className={classes.root}>
+        <h1 className={classes.header} onClick={handleClick}>
+          NHL TEAMS
+        </h1>
+        <div className={classes.teams}>
+          {teams?.map((team) => (
+            <div className={classes.team} key={team.shortName}>
+              {/* <a key={team.name} className={classes.names} href={team.officialSiteUrl}> */}
+              <a
+                key={team.name}
+                className={classes.names}
+                href={`/teams/${team.id}/stats`}
+              >
+                <TeamLogo
+                  classProp={classes.images}
+                  team={team.name}
+                  teamId={team.id}
+                />
+                {team.name}
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
