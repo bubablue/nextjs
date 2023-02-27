@@ -10,68 +10,11 @@ import UserSidebar from "../Components/Sidebar/UserSidebar/UserSidebar";
 
 export default function App({ Component, pageProps }) {
 
-  const router = useRouter();
-  
-  const [state, setState] = React.useState({
-    loggedInStatus: "NOT_LOGGED_IN",
-    user: {},
-  });
-
-  const checkLoginStatus = async () => {
-    await axios
-      .get("http://localhost:3001/logged_in", { withCredentials: true })
-      .then((r) => r.data)
-      .then((user) => {
-        if (user.logged_in) {
-          handleLogin(user);
-        } else {
-          // handleLogout();
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        // handleLogout();
-      });
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    checkLoginStatus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Component, pageProps]);
-
-  const logOut = async () => {
-    const response = await axios.delete("http://localhost:3001/logout", {
-      withCredentials: true,
-    });
-    const user = response.data;
-    if (user.logged_out) {
-      handleLogout();
-    }
-  };
-
-  const handleLogout = () => {
-    setState({
-      loggedInStatus: "NOT_LOGGED_IN",
-      user: {},
-    });
-    router.push('/login')
-  };
-
-  const handleLogin = (user) => {
-    setState({
-      loggedInStatus: "LOGGED_IN",
-      user: user,
-    });
-  };
-
   return (
-    <TeamsProvider state={state}>
-      <Sidebar logout={logOut} />
-      <NhlThemeProvider position={"left"}>
+    <TeamsProvider>
+      <NhlThemeProvider>
         <Component {...pageProps} />
       </NhlThemeProvider>
-      <UserSidebar position={"right"}/>
     </TeamsProvider>
   );
 }

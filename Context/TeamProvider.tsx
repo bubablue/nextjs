@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import Anaheim_Ducks from "../public/Logos/Icons/Anaheim_Ducks.png";
 import Arizona_Coyotes from "../public/Logos/Icons/Arizona_Coyotes.png";
 import Boston_Bruins from "../public/Logos/Icons/Boston_Bruins.png";
@@ -32,6 +32,8 @@ import Vegas_Golden_Knights from "../public/Logos/Icons/Vegas_Golden_Knights.png
 import Washington_Capitals from "../public/Logos/Icons/Washington_Capitals.png";
 import Winnipeg_Jets from "../public/Logos/Icons/Winnipeg_Jets.png";
 import { StaticImageData } from "next/image";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 export interface IAppcontext {
   Anaheim_Ducks: StaticImageData;
@@ -69,6 +71,7 @@ export interface IAppcontext {
   mode: "dark" | "light";
   setMode: (mode: "dark" | "light") => void;
   state: any;
+  setState: (state: any) => void;
 }
 
 export const TeamsContext = createContext<IAppcontext>({
@@ -107,11 +110,49 @@ export const TeamsContext = createContext<IAppcontext>({
   mode: "light",
   setMode: () => {},
   state: {},
+  setState: () => {},
 });
 
-export const TeamsProvider = (props: { children?: React.ReactNode, state?: any }) => {
+export const TeamsProvider = (props: { children?: React.ReactNode }) => {
   const [mode, setMode] = useState<"dark" | "light">("light");
 
+  const router = useRouter();
+  
+  const [state, setState] = React.useState({
+    loggedInStatus: "NOT_LOGGED_IN",
+    user: {},
+  });
+
+  const checkLoginStatus = async () => {
+    await axios
+      .get("http://localhost:3001/logged_in", { withCredentials: true })
+      .then((r) => r.data)
+      .then((user) => {
+        if (user.logged_in) {
+          handleLogin(user);
+        } else {
+          // handleLogout();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        // handleLogout();
+      });
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    checkLoginStatus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state]);
+
+
+  const handleLogin = (user) => {
+    setState({
+      loggedInStatus: "LOGGED_IN",
+      user: user,
+    });
+  };
   const toggleDarkMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark'
     setMode(newMode)
@@ -170,7 +211,8 @@ export const TeamsProvider = (props: { children?: React.ReactNode, state?: any }
         Winnipeg_Jets,
         mode,
         setMode: toggleDarkMode,
-        state: props.state,
+        state,
+        setState,
       }}
     >
       {props.children}
