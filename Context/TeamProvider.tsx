@@ -191,6 +191,7 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
       }
     }
   }, []);
+  
   return (
     <TeamsContext.Provider
       value={{
