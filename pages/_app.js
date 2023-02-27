@@ -66,8 +66,8 @@ export default function App({ Component, pageProps }) {
   };
 
   return (
-    <TeamsProvider>
-      <NhlThemeProvider state={state}>
+    <TeamsProvider state={state}>
+      <NhlThemeProvider>
         <Sidebar logout={logOut} position={"left"}/>
         <Component {...pageProps} />
         <UserSidebar position={"right"} />

@@ -113,13 +113,13 @@ const useStyles = makeStyles((_theme) =>
     menuItemText: {
       color: "white !important",
       position: "fixed",
-      bottom: "100px",
-      fontSize: "1.8rem",
+      bottom: "0px",
+      size: "1.8rem",
     },
     menuItemModeSwitcher: {
       color: "white !important",
       position: "fixed",
-      bottom: "0px",
+      bottom: "10px",
       fontSize: "0.8rem",
     },
   })
@@ -277,12 +277,12 @@ export const Sidebar = (props: Props) => {
           >
             {mode === "light" ? "Dark" : "Light"}
           </Button>
-          {/* <Button
+          <Button
             onClick={state.user.logged_in ? props.logout : () => router.push("/login")}
             className={classes.menuItemText}
           >
             {state.user.logged_in ? <BoxArrowInLeft/> : <BoxArrowInRight/>}
-          </Button> */}
+          </Button>
         </Nav>
       </NavbarCollapse>
     </Navbar>
