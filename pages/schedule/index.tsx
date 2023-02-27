@@ -1,4 +1,4 @@
-import { Accordion, Box, Button, createStyles } from "@material-ui/core";
+import { Accordion, Button, createStyles } from "@material-ui/core";
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
@@ -99,7 +99,8 @@ const useStyles = makeStyles((theme: Theme) =>
       border: "1px solid black",
       borderRadius: "10px",
       padding: "10px",
-      width: "100%",
+      width: "80vw",
+      height: "5vh",
     },
     game: {
       display: "flex",
@@ -258,7 +259,7 @@ export const Schedule = () => {
     switch (game.status.abstractGameState) {
       case "Live":
         return (
-          <Box>
+          <div>
             <p
               className={classes.live}
               onClick={() => router.push(`/games/${game.gamePk}`)}
@@ -268,7 +269,7 @@ export const Schedule = () => {
             <p className={classes.score}>
               {game.teams.home.score} - {game.teams.away.score}
             </p>
-          </Box>
+          </div>
         );
       case "Final":
         return (
@@ -291,28 +292,39 @@ export const Schedule = () => {
     return date.games.map(
       (game: { gamePk?: any; teams?: any; gameDate: any; status?: any }) => {
         return (
-          <Box
+          <div
             className={classes.game}
-            key={`game-${game.gamePk}`}
-            id={`schedule-${game.gamePk}`}
+            key={`game-${game.gamePk}-date-${date.date}`}
+            id={`schedule-${game.gamePk}-date-${date.date}`}
           >
-            <p className={classes.teams}>
+            <p
+              className={classes.teams}
+              key={`${game.teams.home.team.name}-home`}
+            >
               {game.teams.home.team.name} vs {game.teams.away.team.name}
             </p>
-            <Box className={classes.versus}>
+            <div
+              className={classes.versus}
+              key={`${game.teams.home.team.name}-home-vs-${game.teams.away.team.name}-away`}
+            >
               <TeamLogo
                 team={game.teams.home.team.name}
                 teamId={game.teams.home.team.id}
                 classProp={classes.images}
+                key={`${game.teams.home.team.name}-home-logo`}
               />
               <p>VS</p>
               <TeamLogo
                 team={game.teams.away.team.name}
                 teamId={game.teams.away.team.id}
                 classProp={classes.images}
+                key={`${game.teams.away.team.name}-away-logo`}
               />
-            </Box>
-            <p className={classes.time}>
+            </div>
+            <p
+              className={classes.time}
+              key={`${game.teams.home.team.name}-home-vs-${game.teams.away.team.name}-away-time`}
+            >
               {`${new Date(game.gameDate).getHours()}:${
                 new Date(game.gameDate).getMinutes() === 0
                   ? "00"
@@ -327,84 +339,90 @@ export const Schedule = () => {
                 onClick={() => {
                   window.open("https://www.espnplayer.com/home", "_blank");
                 }}
+                key={`button-${game.gamePk}-date-${date.date}`}
               >
                 Watch Live on ESPN
               </Button>
             )}
-          </Box>
+          </div>
         );
       }
     );
   };
 
   return (
-    <Box className={classes.root}>
-      <Box>
-        <Box className={classes.titleBox}>
+    <div className={classes.root}>
+      <div>
+        <div className={classes.titleBox}>
           <h1 className={classes.title}>Schedule</h1>
-        </Box>
+        </div>
         {dates.map((date: any, index: any) => {
           return (
             isToday(date) && (
-              <Box className={classes.section}>
+              <div
+                className={classes.section}
+                key={`section-${date.date}-today`}
+              >
                 <Accordion
                   expanded={true}
                   className={classes.accordion}
-                  key={`accordion-${date.date}`}
+                  key={`accordion-${date.date}-today`}
                 >
-                  <Box
+                  <div
                     className={classes.date}
                     onClick={() => {
                       setGames();
                     }}
-                    key={`title-${date.date}`}
+                    key={`title-${date.date}-today`}
                   >
                     <h2>Available Today</h2>
-                  </Box>
-                  <Box
+                  </div>
+                  <div
                     className={classes.schedule}
-                    key={`schedule-${date.date}`}
+                    key={`schedule-${date.date}-today`}
                   >
                     {scheduledGames(date)}
-                  </Box>
+                  </div>
                 </Accordion>
-              </Box>
+              </div>
             )
           );
         })}
-      </Box>
-      <Box className={classes.titleBox}>
+      </div>
+      <div className={classes.titleBox}>
         <h2 className={classes.title}>Scheduled Games</h2>
-      </Box>
-      <Box className={classes.section}>
+      </div>
+      <div className={classes.section}>
         {dates.map((date: any, index: number) => {
-          return (
-            <Accordion
-              expanded={expanded[index]}
-              className={classes.accordion}
-              key={`accordion-${index}`}
-            >
-              <Box
-                className={classes.date}
-                onClick={() => {
-                  setExpanded((prev) => {
-                    const newExpanded = [...prev];
-                    newExpanded[index] = !newExpanded[index];
-                    return newExpanded;
-                  });
-                }}
-                key={`title-${index}`}
+          if (index > 3) {
+            return (
+              <Accordion
+                expanded={expanded[index]}
+                className={classes.accordion}
+                key={`accordion-${date.date}-all`}
               >
-                <h2 key={`date-${index}`}>{date.date}</h2>
-              </Box>
-              <Box className={classes.schedule} key={`schedule-${index}`}>
-                {scheduledGames(date)}
-              </Box>
-            </Accordion>
-          );
+                <div
+                  className={classes.date}
+                  onClick={() => {
+                    setExpanded((prev) => {
+                      const newExpanded = [...prev];
+                      newExpanded[index] = !newExpanded[index];
+                      return newExpanded;
+                    });
+                  }}
+                  key={`title-${date.date}`}
+                >
+                  <h2 key={`date-${date.date}`}>{date.date}</h2>
+                </div>
+                <div className={classes.schedule} key={`schedule-${index}`}>
+                  {scheduledGames(date)}
+                </div>
+              </Accordion>
+            );
+          }
         })}
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 };
 
