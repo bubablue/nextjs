@@ -7,7 +7,6 @@ import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import { TeamLogo } from "../../Components/TeamLogo";
 import Colours from "../../Context/Theme/Colours";
-import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useTeams } from "../../Context/TeamProvider";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -15,17 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       padding: "100px",
       paddingBottom: "300px",
-      background: Colours.BW[theme.palette.mode],
-    },
-    sidebar: {
-      position: "fixed",
-      top: "0",
-      left: "0",
-      height: "100%",
-      zIndex: 1,
-      overflowX: "hidden",
-      transition: "0.5s",
-      paddingTop: "60px",
       background: Colours.BW[theme.palette.mode],
     },
     titleBox: {
@@ -195,7 +183,7 @@ export const Schedule = () => {
   const [expanded, setExpanded] = useState<boolean[]>(array);
   const router = useRouter();
 
-  const {logout}= useTeams()
+  const { logout } = useTeams();
 
   const getSchedule = useCallback(async () => {
     const NHL_URL =
@@ -351,9 +339,6 @@ export const Schedule = () => {
 
   return (
     <Box className={classes.root}>
-      <Box className={classes.sidebar}>
-        <Sidebar logout={logout} />
-      </Box>
       <Box>
         <Box className={classes.titleBox}>
           <h1 className={classes.title}>Schedule</h1>
