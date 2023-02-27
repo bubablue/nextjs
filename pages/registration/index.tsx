@@ -16,13 +16,13 @@ const useStyles = makeStyles((_theme: Theme) =>
       alignItems: "center",
       textAlign: "center",
       padding: "50px",
-    //   borderRadius: "10px",
+      //   borderRadius: "10px",
       height: "110rem",
-    //   boxShadow: "0 3px 5px 2px grey",
+      //   boxShadow: "0 3px 5px 2px grey",
       background: "linear-gradient(45deg, rgb(0,0,0) 30%, #FF8E53 90%)",
     },
     headerBox: {
-        display: "flex",
+      display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignSelf: "center",
@@ -32,9 +32,8 @@ const useStyles = makeStyles((_theme: Theme) =>
       padding: "50px",
       borderRadius: "10px",
       height: "auto",
-    //   boxShadow: "0 3px 5px 2px grey",
+      //   boxShadow: "0 3px 5px 2px grey",
       background: "linear-gradient(45deg, rgb(0,0,0) 30%, #FF8E53 90%)",
-
     },
     form: {
       display: "flex",
@@ -47,8 +46,8 @@ const useStyles = makeStyles((_theme: Theme) =>
       padding: "50px",
       borderRadius: "10px",
       height: "auto",
-    //   boxShadow: "0 3px 5px 2px grey",
-    //   background: "linear-gradient(45deg, rgb(0,0,0) 30%, #FF8E53 90%)",
+      //   boxShadow: "0 3px 5px 2px grey",
+      //   background: "linear-gradient(45deg, rgb(0,0,0) 30%, #FF8E53 90%)",
     },
     input: {
       margin: "10px",
@@ -62,7 +61,7 @@ const useStyles = makeStyles((_theme: Theme) =>
       margin: "20px !important",
       padding: "10px",
       borderRadius: "10px",
-    //   boxShadow: "0 3px 5px 2px grey",
+      //   boxShadow: "0 3px 5px 2px grey",
       background: "white !important",
     },
     titleBox: {
@@ -86,10 +85,10 @@ const useStyles = makeStyles((_theme: Theme) =>
     },
   })
 );
-
-export const Login = () => {
+export const Registration = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = React.useState("");
   const classes = useStyles();
   const router = useRouter();
 
@@ -97,23 +96,23 @@ export const Login = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:3001/sessions",
+        "http://localhost:3001/registrations",
         {
           user: {
             email: email,
             password: password,
-            
+            password_confirmation: passwordConfirmation,
           },
         },
         { withCredentials: true }
       )
       .then((response: any) => {
-        if(response.data.status === "created"){
-          router.push("/dashboard")
+        if (response.data.status === "created") {
+          router.push("/login");
         }
       })
       .catch((error: any) => {
-        console.log("login error", error);
+        console.log("registration error", error);
       });
   };
   const handleChange = (e: any) => {
@@ -122,7 +121,9 @@ export const Login = () => {
   const handleChangeaPassword = (e: any) => {
     setPassword(e.target.value);
   };
-
+  const handleChangeaPasswordConfirmation = (e: any) => {
+    setPasswordConfirmation(e.target.value);
+  };
 
   return (
     <Grid className={classes.root}>
@@ -144,13 +145,21 @@ export const Login = () => {
             onChange={handleChangeaPassword}
             className={classes.input}
           />
-          <Button type="submit" className={classes.button}>Log In</Button>
-          <Button href="/registration" className={classes.button}>Sign Up</Button>
+          <input
+            type="password"
+            name="password_confirmation"
+            placeholder="Password Confirmation"
+            value={passwordConfirmation}
+            onChange={handleChangeaPasswordConfirmation}
+            className={classes.input}
+          />
+          <Button type="submit" className={classes.button}>
+            Submit
+          </Button>
         </form>
       </Box>
     </Grid>
   );
 };
 
-
-export default Login
+export default Registration;

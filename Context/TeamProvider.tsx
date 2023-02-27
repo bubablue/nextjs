@@ -121,7 +121,7 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
   const [mode, setMode] = useState<"dark" | "light">("light");
 
   const router = useRouter();
-  
+
   const [state, setState] = React.useState({
     loggedInStatus: "NOT_LOGGED_IN",
     user: {},
@@ -150,7 +150,6 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const handleLogin = (user: any) => {
     setState({
       loggedInStatus: "LOGGED_IN",
@@ -158,14 +157,14 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
     });
   };
   const toggleDarkMode = () => {
-    const newMode = mode === 'dark' ? 'light' : 'dark'
-    setMode(newMode)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('UserTheme', newMode)
+    const newMode = mode === "dark" ? "light" : "dark";
+    setMode(newMode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("UserTheme", newMode);
     }
     // document.documentElement.style.removeProperty('background')
     // document.body.style.removeProperty('background')
-  }
+  };
 
   const logOut = async () => {
     const response = await axios.delete("http://localhost:3001/logout", {
@@ -181,20 +180,17 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
     });
-    router.push('/login')
+    router.push("/login");
   };
 
   React.useEffect(() => {
-    if (
-      typeof window !== 'undefined' &&
-      localStorage.getItem('UserTheme')
-    ) {
-      const newMode = localStorage.getItem('UserTheme')
-      if (newMode === 'light' || newMode === 'dark') {
-        setMode(newMode)
+    if (typeof window !== "undefined" && localStorage.getItem("UserTheme")) {
+      const newMode = localStorage.getItem("UserTheme");
+      if (newMode === "light" || newMode === "dark") {
+        setMode(newMode);
       }
     }
-  }, [])
+  }, []);
   return (
     <TeamsContext.Provider
       value={{
@@ -245,4 +241,4 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
 
 export const useTeams = () => useContext(TeamsContext);
 
-export default TeamsProvider
+export default TeamsProvider;

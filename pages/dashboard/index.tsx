@@ -1,14 +1,12 @@
-import React from "react";
-import { TeamLogo } from "../../Components/TeamLogo";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { makeStyles } from "@mui/styles";
 import { Box, createStyles } from "@material-ui/core";
-import Colours from "../../Context/Theme/Colours";
 import { Theme } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
+import React from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { TeamLogo } from "../../Components/TeamLogo";
 import { useTeams } from "../../Context/TeamProvider";
-import axios from "axios";
+import Colours from "../../Context/Theme/Colours";
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
