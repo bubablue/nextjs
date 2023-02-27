@@ -72,6 +72,8 @@ export interface IAppcontext {
   setMode: (mode: "dark" | "light") => void;
   state: any;
   setState: (state: any) => void;
+  logout: () => void;
+  handleLogout: () => void;
 }
 
 export const TeamsContext = createContext<IAppcontext>({
@@ -111,6 +113,8 @@ export const TeamsContext = createContext<IAppcontext>({
   setMode: () => {},
   state: {},
   setState: () => {},
+  logout: () => {},
+  handleLogout: () => {},
 });
 
 export const TeamsProvider = (props: { children?: React.ReactNode }) => {
@@ -144,10 +148,10 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
   useEffect(() => {
     checkLoginStatus();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
+  }, []);
 
 
-  const handleLogin = (user) => {
+  const handleLogin = (user: any) => {
     setState({
       loggedInStatus: "LOGGED_IN",
       user: user,
@@ -162,6 +166,23 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
     // document.documentElement.style.removeProperty('background')
     // document.body.style.removeProperty('background')
   }
+
+  const logOut = async () => {
+    const response = await axios.delete("http://localhost:3001/logout", {
+      withCredentials: true,
+    });
+    const user = response.data;
+    if (user.logged_out) {
+      handleLogout();
+    }
+  };
+  const handleLogout = () => {
+    setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {},
+    });
+    router.push('/login')
+  };
 
   React.useEffect(() => {
     if (
@@ -213,6 +234,8 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
         setMode: toggleDarkMode,
         state,
         setState,
+        logout: logOut,
+        handleLogout,
       }}
     >
       {props.children}

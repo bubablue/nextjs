@@ -89,7 +89,7 @@ const Dashboard = () => {
     const data = await response.json();
     setTeams(data.teams);
   };
-const { state, setState } =useTeams();
+const { logout } =useTeams();
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -100,27 +100,11 @@ const { state, setState } =useTeams();
     router.push("/dashboard");
   };
   
-  const logOut = async () => {
-    const response = await axios.delete("http://localhost:3001/logout", {
-      withCredentials: true,
-    });
-    const user = response.data;
-    if (user.logged_out) {
-      handleLogout();
-    }
-  };
-  const handleLogout = () => {
-    setState({
-      loggedInStatus: "NOT_LOGGED_IN",
-      user: {},
-    });
-    router.push('/login')
-  };
 
   return (
     <div className={classes.root}>
     <Box className={classes.sidebar}>
-        <Sidebar logout={logOut}/>
+        <Sidebar logout={logout}/>
     </Box>
       <h1 className={classes.header} onClick={handleClick}>
         NHL TEAMS
