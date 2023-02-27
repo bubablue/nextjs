@@ -3,7 +3,6 @@ import { Theme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import { useRouter } from "next/router";
 import React from "react";
-import Sidebar from "../../Components/Sidebar/Sidebar";
 import { TeamLogo } from "../../Components/TeamLogo";
 import { useTeams } from "../../Context/TeamProvider";
 import Colours from "../../Context/Theme/Colours";
@@ -15,17 +14,6 @@ const useStyles = makeStyles((theme: Theme) => {
       paddingBottom: "300px",
       background: Colours.BW[theme.palette.mode],
       minHeight: "100vh",
-    },
-    sidebar: {
-      position: "fixed",
-      top: "0",
-      left: "0",
-      height: "100%",
-      zIndex: 1,
-      overflowX: "hidden",
-      transition: "0.5s",
-      paddingTop: "60px",
-      background: Colours.BW[theme.palette.mode],
     },
     header: {
       display: "flex",
@@ -87,7 +75,7 @@ const Dashboard = () => {
     const data = await response.json();
     setTeams(data.teams);
   };
-const { logout } =useTeams();
+  const { logout } = useTeams();
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -97,13 +85,9 @@ const { logout } =useTeams();
   const handleClick = () => {
     router.push("/dashboard");
   };
-  
 
   return (
     <div className={classes.root}>
-    <Box className={classes.sidebar}>
-        <Sidebar logout={logout}/>
-    </Box>
       <h1 className={classes.header} onClick={handleClick}>
         NHL TEAMS
       </h1>

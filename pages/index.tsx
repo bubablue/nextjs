@@ -6,7 +6,6 @@ import { Box, createStyles } from "@material-ui/core";
 import Colours from "../Context/Theme/Colours";
 import { Theme } from "@mui/material/styles";
 import { useRouter } from "next/router";
-import Sidebar from "../Components/Sidebar/Sidebar";
 import { useTeams } from "../Context/TeamProvider";
 import axios from "axios";
 
@@ -17,17 +16,6 @@ const useStyles = makeStyles((theme: Theme) => {
       paddingBottom: "300px",
       background: Colours.BW[theme.palette.mode],
       minHeight: "100vh",
-    },
-    sidebar: {
-      position: "fixed",
-      top: "0",
-      left: "0",
-      height: "100%",
-      zIndex: 1,
-      overflowX: "hidden",
-      transition: "0.5s",
-      paddingTop: "60px",
-      background: Colours.BW[theme.palette.mode],
     },
     header: {
       display: "flex",
@@ -89,7 +77,7 @@ const Dashboard = () => {
     const data = await response.json();
     setTeams(data.teams);
   };
-const { state, setState } =useTeams();
+  const { state, setState } = useTeams();
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -99,7 +87,7 @@ const { state, setState } =useTeams();
   const handleClick = () => {
     router.push("/dashboard");
   };
-  
+
   const logOut = async () => {
     const response = await axios.delete("http://localhost:3001/logout", {
       withCredentials: true,
@@ -114,14 +102,11 @@ const { state, setState } =useTeams();
       loggedInStatus: "NOT_LOGGED_IN",
       user: {},
     });
-    router.push('/login')
+    router.push("/login");
   };
 
   return (
     <div className={classes.root}>
-    <Box className={classes.sidebar}>
-        <Sidebar logout={logOut}/>
-    </Box>
       <h1 className={classes.header} onClick={handleClick}>
         NHL TEAMS
       </h1>
