@@ -109,7 +109,6 @@ export const Standings = () => {
     <div className={classes.root}>
       <h1 className={classes.mainHeader}>Standings</h1>
       {data.records.map((record: any) => {
-        console.log(record);
         return (
           <div key={`${record.division.name}-main`}>
             <h2
@@ -120,7 +119,7 @@ export const Standings = () => {
             </h2>
             {record.teamRecords.map((team: any) => {
               return (
-                <div className={classes.teams}>
+                <div className={classes.teams} key={`${team.team.name}-teams`}>
                   <TeamLogo
                     team={team.team.name}
                     teamId={team.team.name}
