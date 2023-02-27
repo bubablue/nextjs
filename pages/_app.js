@@ -4,7 +4,9 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from "react";
 import TeamsProvider from "../Context/TeamProvider";
 import NhlThemeProvider from "../Context/Theme/ThemeProvider";
-import Dashboard from "../pages/Dashboard/Dashboard";
+import Dashboard from "./dashboard";
+import Sidebar from "../components/Sidebar/Sidebar";
+import UserSidebar from "../components/Sidebar/UserSidebar/UserSidebar";
 
 export default function App({ Component, pageProps }) {
 
@@ -66,8 +68,9 @@ export default function App({ Component, pageProps }) {
   return (
     <TeamsProvider>
       <NhlThemeProvider state={state}>
-        <Dashboard />
+        <Sidebar logout={logOut} position={"left"}/>
         <Component {...pageProps} />
+        <UserSidebar position={"right"} />
       </NhlThemeProvider>
     </TeamsProvider>
   );
