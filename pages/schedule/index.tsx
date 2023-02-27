@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, createStyles } from "@material-ui/core";
+import { Accordion, Button, createStyles } from "@material-ui/core";
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
@@ -7,7 +7,6 @@ import { useQuery } from "react-query";
 import { useRouter } from "next/router";
 import { TeamLogo } from "../../Components/TeamLogo";
 import Colours from "../../Context/Theme/Colours";
-import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useTeams } from "../../Context/TeamProvider";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -15,17 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       padding: "100px",
       paddingBottom: "300px",
-      background: Colours.BW[theme.palette.mode],
-    },
-    sidebar: {
-      position: "fixed",
-      top: "0",
-      left: "0",
-      height: "100%",
-      zIndex: 1,
-      overflowX: "hidden",
-      transition: "0.5s",
-      paddingTop: "60px",
       background: Colours.BW[theme.palette.mode],
     },
     titleBox: {
@@ -364,9 +352,6 @@ export const Schedule = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.sidebar}>
-        <Sidebar logout={logout} />
-      </div>
       <div>
         <div className={classes.titleBox}>
           <h1 className={classes.title}>Schedule</h1>

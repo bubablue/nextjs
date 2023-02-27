@@ -3,6 +3,7 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import TeamsProvider from "../Context/TeamProvider";
 import NhlThemeProvider from "../Context/Theme/ThemeProvider";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
@@ -10,7 +11,10 @@ export default function App({ Component, pageProps }) {
     <QueryClientProvider client={queryClient}>
       <TeamsProvider>
         <NhlThemeProvider>
-          <Component {...pageProps} />
+          <div>
+            <Sidebar logout={() => {}} />
+            <Component {...pageProps} />
+          </div>
         </NhlThemeProvider>
       </TeamsProvider>
     </QueryClientProvider>
