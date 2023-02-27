@@ -1,20 +1,18 @@
 // import '@/styles/globals.css'
-import axios from "axios";
-import { useRouter } from 'next/router';
-import React, { useEffect } from "react";
+import React from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import TeamsProvider from "../Context/TeamProvider";
 import NhlThemeProvider from "../Context/Theme/ThemeProvider";
-import Dashboard from "./dashboard";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import UserSidebar from "../Components/Sidebar/UserSidebar/UserSidebar";
 
 export default function App({ Component, pageProps }) {
-
+  const queryClient = new QueryClient();
   return (
-    <TeamsProvider>
-      <NhlThemeProvider>
-        <Component {...pageProps} />
-      </NhlThemeProvider>
-    </TeamsProvider>
+    <QueryClientProvider client={queryClient}>
+      <TeamsProvider>
+        <NhlThemeProvider>
+          <Component {...pageProps} />
+        </NhlThemeProvider>
+      </TeamsProvider>
+    </QueryClientProvider>
   );
 }
