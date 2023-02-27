@@ -126,7 +126,7 @@ const { state, setState } =useTeams();
         NHL TEAMS
       </h1>
       <div className={classes.teams}>
-        {teams?.map((team) => (
+        {teams?.map((team: any) => (
           <div className={classes.team} key={team.shortName}>
             {/* <a key={team.name} className={classes.names} href={team.officialSiteUrl}> */}
             <a
