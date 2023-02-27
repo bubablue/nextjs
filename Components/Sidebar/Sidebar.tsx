@@ -10,7 +10,7 @@ import {
   List,
   PeopleFill,
   PlayBtn,
-  X
+  X,
 } from "react-bootstrap-icons";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
@@ -45,26 +45,26 @@ const useStyles = makeStyles((_theme) =>
       margin: "0px 5% 50px 5%",
       width: "90%",
     },
-    sidebarToggle:{
-        background: "transparent",
-        border: 0,
-        color: "white",
+    sidebarToggle: {
+      background: "transparent",
+      border: 0,
+      color: "white",
     },
     toggle: {
-        display: "flex",
-        justifyContent: "center",
-        justifySelf: "center",
-        alignItems: "center",
-        textAlign: "center",
-        background: "transparent",
-        border: 0,
-        color: "white",
-        height: "40px",
-        width: "40px",
-        '&:hover': {
-            color: "#FF8E53",
-            cursor: "pointer",
-        }
+      display: "flex",
+      justifyContent: "center",
+      justifySelf: "center",
+      alignItems: "center",
+      textAlign: "center",
+      background: "transparent",
+      border: 0,
+      color: "white",
+      height: "40px",
+      width: "40px",
+      "&:hover": {
+        color: "#FF8E53",
+        cursor: "pointer",
+      },
     },
     drawerOpen: {
       position: "fixed",
@@ -108,8 +108,7 @@ const useStyles = makeStyles((_theme) =>
         color: "#FF8E53",
       },
     },
-    menuItem: {
-    },
+    menuItem: {},
     menuItemText: {
       color: "white !important",
       position: "fixed",
@@ -128,7 +127,7 @@ const useStyles = makeStyles((_theme) =>
 export const Sidebar = (props: Props) => {
   const [open, setOpen] = React.useState<boolean>(false);
   const classes = useStyles();
-  const router = useRouter()
+  const router = useRouter();
   const handleDrawerOpen = () => {
     setOpen(!open);
   };
@@ -150,31 +149,17 @@ export const Sidebar = (props: Props) => {
             className={classes.sidebarToggle}
             onClick={handleDrawerOpen}
           >
-            {open ? (
-              <Box className={classes.menuItem}>
-                <p>
-                  <Tooltip title={open ? "Close Menu" : "Open Menu"}>
-                    {open ? (
-                      <X className={classes.toggle} />
-                    ) : (
-                      <List className={classes.toggle} />
-                    )}
-                  </Tooltip>
-                </p>
-              </Box>
-            ) : (
-              <Box className={classes.menuItem}>
-                <p>
-                  <Tooltip title={open ? "Close Menu" : "Open Menu"}>
-                    {open ? (
-                      <X className={classes.toggle} />
-                    ) : (
-                      <List className={classes.toggle} />
-                    )}
-                  </Tooltip>
-                </p>
-              </Box>
-            )}
+            <Box className={classes.menuItem}>
+              <p>
+                <Tooltip title={open ? "Close Menu" : "Open Menu"}>
+                  {open ? (
+                    <X className={classes.toggle} />
+                  ) : (
+                    <List className={classes.toggle} />
+                  )}
+                </Tooltip>
+              </p>
+            </Box>
           </NavbarToggle>
           <Nav.Link className={classes.link} href="/dashboard">
             {open ? (
@@ -278,10 +263,12 @@ export const Sidebar = (props: Props) => {
             {mode === "light" ? "Dark" : "Light"}
           </Button>
           <Button
-            onClick={state.user.logged_in ? props.logout : () => router.push("/login")}
+            onClick={
+              state.user.logged_in ? props.logout : () => router.push("/login")
+            }
             className={classes.menuItemText}
           >
-            {state.user.logged_in ? <BoxArrowInLeft/> : <BoxArrowInRight/>}
+            {state.user.logged_in ? <BoxArrowInLeft /> : <BoxArrowInRight />}
           </Button>
         </Nav>
       </NavbarCollapse>
