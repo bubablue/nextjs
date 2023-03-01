@@ -156,7 +156,6 @@ export const MyTeam = () => {
       refetchOnWindowFocus: false,
       onSuccess: (data) => {
         setTeam([]);
-        console.log(data);
         return data.map(async (player: any) => {
           let response = await axios.get(
             `https://statsapi.web.nhl.com/api/v1/people/${player.player_id}`

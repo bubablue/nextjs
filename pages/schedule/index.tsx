@@ -217,7 +217,6 @@ export const Schedule = () => {
   }
 
   const isUpToDate = (date: { date: string | number | Date }) => {
-    console.log(new Date(Date.now()).getUTCDate());
     return new Date(Date.now()).getMonth() > new Date(date.date).getMonth() ||
       (new Date(Date.now()).getMonth() === new Date(date.date).getMonth() &&
         new Date(Date.now()).getUTCDate() - 2 >=

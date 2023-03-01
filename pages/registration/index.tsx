@@ -112,7 +112,7 @@ export const Registration = () => {
         }
       })
       .catch((error: any) => {
-        console.log("registration error", error);
+        // console.log("registration error", error);
       });
   };
   const handleChange = (e: any) => {

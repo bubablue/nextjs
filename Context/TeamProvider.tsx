@@ -139,7 +139,7 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         // handleLogout();
       });
   };

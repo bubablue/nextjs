@@ -113,7 +113,7 @@ export const Login = () => {
         }
       })
       .catch((error: any) => {
-        console.log("login error", error);
+        // console.log("login error", error);
       });
   };
   const handleChange = (e: any) => {
