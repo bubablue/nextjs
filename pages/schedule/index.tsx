@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme: Theme) =>
       borderRadius: "10px",
       padding: "10px",
       width: "80vw",
-      height: "5vh",
+      height: "fit-content",
     },
     game: {
       display: "flex",
