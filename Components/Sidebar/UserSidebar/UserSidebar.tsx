@@ -125,7 +125,7 @@ export const UserSidebar = () => {
             onClick={handleDrawerOpen}
           >
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={open ? "Close Menu" : "Open Menu"}>
                     {open ? (
@@ -135,9 +135,9 @@ export const UserSidebar = () => {
                     )}
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={open ? "Close Menu" : "Open Menu"}>
                     {open ? (
@@ -147,83 +147,83 @@ export const UserSidebar = () => {
                     )}
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
           </NavbarToggle>
           <Nav.Link className={classes.link} href="/dashboard">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Dashboard"}>
                     <Microsoft />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Dashboard"}>
                     <Microsoft />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
           </Nav.Link>
           <Nav.Link className={classes.link} href="/myteam">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"My Team"}>
                     <Journal />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"My Team"}>
                     <Journal />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
           </Nav.Link>
           <Nav.Link className={classes.link} href="/schedule">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Games"}>
                     <LayoutTextWindow />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Games"}>
                     <LayoutTextWindow />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
           </Nav.Link>
           <Nav.Link className={classes.link} href="/standings">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Stands"}>
                     <Clipboard2DataFill />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Stands"}>
                     <Clipboard2DataFill />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
           </Nav.Link>
         </Nav>
