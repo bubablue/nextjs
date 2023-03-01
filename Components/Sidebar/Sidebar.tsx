@@ -237,7 +237,7 @@ export const Sidebar = (props: Props) => {
               </Box>
             )}
           </Nav.Link>
-          <Nav.Link className={classes.link} href="/news">
+          {/* <Nav.Link className={classes.link} href="/news">
             {open ? (
               <Box className={classes.menuItem}>
                 <p>
@@ -255,7 +255,7 @@ export const Sidebar = (props: Props) => {
                 </p>
               </Box>
             )}
-          </Nav.Link>
+          </Nav.Link> */}
           <Button
             onClick={handleModeSwitch}
             className={classes.menuItemModeSwitcher}
