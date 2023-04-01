@@ -210,7 +210,7 @@ export const MyTeam = () => {
 
   useEffect(() => {
     getPlayers();
-  }, [team]);
+  }, [team, getPlayers]);
 
   const createData = (
     name: string | number,

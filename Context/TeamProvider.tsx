@@ -190,7 +190,7 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
         setMode(newMode);
       }
     }
-    toggleDarkMode()
+    toggleDarkMode();
   }, []);
 
   return (

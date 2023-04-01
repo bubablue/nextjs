@@ -21,6 +21,7 @@ import { makeStyles } from "@mui/styles";
 import { createStyles } from "@material-ui/core";
 import Colours from "../../Context/Theme/Colours";
 import { Theme } from "@mui/material/styles";
+import Link from "next/link";
 
 interface Props {
   logout?: React.MouseEventHandler<HTMLButtonElement> | undefined;
@@ -149,7 +150,7 @@ export const Sidebar = (props: Props) => {
             className={classes.sidebarToggle}
             onClick={handleDrawerOpen}
           >
-            <Box className={classes.menuItem}>
+            <div className={classes.menuItem}>
               <p>
                 <Tooltip title={open ? "Close Menu" : "Open Menu"}>
                   {open ? (
@@ -159,84 +160,84 @@ export const Sidebar = (props: Props) => {
                   )}
                 </Tooltip>
               </p>
-            </Box>
+            </div>
           </NavbarToggle>
-          <Nav.Link className={classes.link} href="/dashboard">
+          <Link className={classes.link} href="/dashboard">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Home"}>
                     <House />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Home"}>
                     <House />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
-          </Nav.Link>
-          <Nav.Link className={classes.link} href="/team">
+          </Link>
+          <Link className={classes.link} href="/team">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Teams"}>
                     <PeopleFill />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Teams"}>
                     <PeopleFill />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
-          </Nav.Link>
-          <Nav.Link className={classes.link} href="/schedule">
+          </Link>
+          <Link className={classes.link} href="/schedule">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Games"}>
                     <PlayBtn />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Games"}>
                     <PlayBtn />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
-          </Nav.Link>
-          <Nav.Link className={classes.link} href="/standings">
+          </Link>
+          <Link className={classes.link} href="/standings">
             {open ? (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Stands"}>
                     <Clipboard2DataFill />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             ) : (
-              <Box className={classes.menuItem}>
+              <div className={classes.menuItem}>
                 <p>
                   <Tooltip title={"Stands"}>
                     <Clipboard2DataFill />
                   </Tooltip>
                 </p>
-              </Box>
+              </div>
             )}
-          </Nav.Link>
+          </Link>
           {/* <Nav.Link className={classes.link} href="/news">
             {open ? (
               <Box className={classes.menuItem}>
