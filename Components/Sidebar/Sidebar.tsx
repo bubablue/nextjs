@@ -181,7 +181,7 @@ export const Sidebar = (props: Props) => {
               </div>
             )}
           </Link>
-          <Link className={classes.link} href="/team">
+          <Link className={classes.link} href="/teams">
             {open ? (
               <div className={classes.menuItem}>
                 <p>
