@@ -76,10 +76,20 @@ export const TeamStats = () => {
           <div>
             {data.map((stats: any) => {
               return (
-                <div>
+                <div
+                  key={
+                    stats.games[0].teams.home.team.name +
+                    stats.games[0].teams.away.team.name
+                  }
+                >
                   {stats.games.map((game: any) => {
                     return (
-                      <Card className={classes.accordion}>
+                      <Card
+                        className={classes.accordion}
+                        key={
+                          game.teams.home.team.name + game.teams.away.team.name
+                        }
+                      >
                         <div className={classes.teams}>
                           <div className={classes.date}>
                             <h3>
@@ -128,7 +138,9 @@ export const TeamStats = () => {
                           {game.tickets?.map((ticket: any) => {
                             return (
                               game.status.abstractGameState != "Final" && (
-                                <div>
+                                <div
+                                  key={ticket.ticketType + ticket.ticketLink}
+                                >
                                   <Button
                                     href={ticket.ticketLink}
                                     className={classes.link}
