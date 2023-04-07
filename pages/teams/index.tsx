@@ -1,36 +1,39 @@
 import {
-    Chip,
-    IconButton,
-    Input,
-    Paper,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TablePagination,
-    TableRow,
-    TableSortLabel,
-    useTheme,
+  Chip,
+  IconButton,
+  Input,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel,
+  useTheme,
 } from "@material-ui/core";
 import { Button } from "antd";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
 import {
-    ChevronBarLeft,
-    ChevronBarRight,
-    ChevronLeft,
-    ChevronRight,
+  ChevronBarLeft,
+  ChevronBarRight,
+  ChevronLeft,
+  ChevronRight,
 } from "react-bootstrap-icons";
 import { useQuery } from "react-query";
 import { FilterDrawer } from "../../Components/FilterDrawer/FilterDrawer";
 import { TeamLogo } from "../../Components/TeamLogo";
+import { useTeams } from "../../Context/TeamProvider";
+import Colours from "../../Context/Theme/Colours";
 import useStyles from "../../styles/teams";
   
   export const PlayersGeneral = () => {
     const [teams, setTeams] = React.useState<any[]>([]);
     const [rowsData, setRowsData] = React.useState<any[]>([]);
+    const { mode } = useTeams();
   
     const NHL_URL =
       "https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster";
@@ -496,27 +499,30 @@ import useStyles from "../../styles/teams";
                         component="th"
                         scope="row"
                         className={classes.listItem}
+                        style={{color: Colours.BW_02[mode]}}
                       >
                         <TeamLogo
                           team={player.team}
                           teamId={player.team}
                           classProp={classes.images}
+                          style={{color: Colours.BW_02[mode]}}
                         />
                       </TableCell>
                       <TableCell
                         component="th"
                         scope="row"
                         className={classes.listItem}
+                        style={{color: Colours.BW_02[mode]}}
                       >
                         {player.name}
                       </TableCell>
-                      <TableCell align="left" className={classes.listItem}>
+                      <TableCell align="left" className={classes.listItem} style={{color: Colours.BW_02[mode]}}>
                         {player.position}
                       </TableCell>
                       <TableCell
                         align="left"
                         onClick={() => handleClick(player.id)}
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color: Colours.BW_02[mode] }}
                         className={classes.listItem}
                       >
                         {player.id}
@@ -542,6 +548,7 @@ import useStyles from "../../styles/teams";
                 onRowsPerPageChange={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
                 className={classes.pagination}
+                style={{color: Colours.BW_02[mode]}}
               />
             </TableRow>
           </Table>

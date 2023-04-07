@@ -1,8 +1,7 @@
-import { Box, Button, Tooltip } from "@material-ui/core";
+import { Button, Tooltip } from "@material-ui/core";
 import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import {
-  Book,
   BoxArrowInLeft,
   BoxArrowInRight,
   Clipboard2DataFill,
@@ -10,18 +9,16 @@ import {
   List,
   PeopleFill,
   PlayBtn,
-  X,
+  X
 } from "react-bootstrap-icons";
 import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 // import { useNavigate } from "react-router-dom";
-import { useTeams } from "../../Context/TeamProvider";
-import { useRouter } from "next/router";
-import { makeStyles } from "@mui/styles";
 import { createStyles } from "@material-ui/core";
-import Colours from "../../Context/Theme/Colours";
-import { Theme } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useTeams } from "../../Context/TeamProvider";
 
 interface Props {
   logout?: React.MouseEventHandler<HTMLButtonElement> | undefined;
