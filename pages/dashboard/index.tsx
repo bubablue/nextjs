@@ -98,7 +98,7 @@ const Dashboard = () => {
             <a
               key={team.name}
               className={classes.names}
-              href={`/teams/${team.id}/stats`}
+              href={`/dashboard/${team.id}`}
             >
               <TeamLogo
                 classProp={classes.images}
