@@ -9,9 +9,8 @@ import {
   List,
   PeopleFill,
   PlayBtn,
-  X
+  X,
 } from "react-bootstrap-icons";
-import NavbarCollapse from "react-bootstrap/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 // import { useNavigate } from "react-router-dom";
 import { createStyles } from "@material-ui/core";
@@ -141,101 +140,100 @@ export const Sidebar = (props: Props) => {
       variant="dark"
       className={open ? classes.drawerOpen : classes.drawerClose}
     >
-      <NavbarCollapse id="basic-navbar-nav">
-        <Nav className={classes.toolbar}>
-          <NavbarToggle
-            className={classes.sidebarToggle}
-            onClick={handleDrawerOpen}
-          >
+      <Nav className={classes.toolbar}>
+        <NavbarToggle
+          className={classes.sidebarToggle}
+          onClick={handleDrawerOpen}
+        >
+          <div className={classes.menuItem}>
+            <p>
+              <Tooltip title={open ? "Close Menu" : "Open Menu"}>
+                {open ? (
+                  <X className={classes.toggle} />
+                ) : (
+                  <List className={classes.toggle} />
+                )}
+              </Tooltip>
+            </p>
+          </div>
+        </NavbarToggle>
+        <Link className={classes.link} href="/dashboard">
+          {open ? (
             <div className={classes.menuItem}>
               <p>
-                <Tooltip title={open ? "Close Menu" : "Open Menu"}>
-                  {open ? (
-                    <X className={classes.toggle} />
-                  ) : (
-                    <List className={classes.toggle} />
-                  )}
+                <Tooltip title={"Home"}>
+                  <House />
                 </Tooltip>
               </p>
             </div>
-          </NavbarToggle>
-          <Link className={classes.link} href="/dashboard">
-            {open ? (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Home"}>
-                    <House />
-                  </Tooltip>
-                </p>
-              </div>
-            ) : (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Home"}>
-                    <House />
-                  </Tooltip>
-                </p>
-              </div>
-            )}
-          </Link>
-          <Link className={classes.link} href="/teams">
-            {open ? (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Teams"}>
-                    <PeopleFill />
-                  </Tooltip>
-                </p>
-              </div>
-            ) : (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Teams"}>
-                    <PeopleFill />
-                  </Tooltip>
-                </p>
-              </div>
-            )}
-          </Link>
-          <Link className={classes.link} href="/schedule">
-            {open ? (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Games"}>
-                    <PlayBtn />
-                  </Tooltip>
-                </p>
-              </div>
-            ) : (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Games"}>
-                    <PlayBtn />
-                  </Tooltip>
-                </p>
-              </div>
-            )}
-          </Link>
-          <Link className={classes.link} href="/standings">
-            {open ? (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Stands"}>
-                    <Clipboard2DataFill />
-                  </Tooltip>
-                </p>
-              </div>
-            ) : (
-              <div className={classes.menuItem}>
-                <p>
-                  <Tooltip title={"Stands"}>
-                    <Clipboard2DataFill />
-                  </Tooltip>
-                </p>
-              </div>
-            )}
-          </Link>
-          {/* <Nav.Link className={classes.link} href="/news">
+          ) : (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Home"}>
+                  <House />
+                </Tooltip>
+              </p>
+            </div>
+          )}
+        </Link>
+        <Link className={classes.link} href="/teams">
+          {open ? (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Teams"}>
+                  <PeopleFill />
+                </Tooltip>
+              </p>
+            </div>
+          ) : (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Teams"}>
+                  <PeopleFill />
+                </Tooltip>
+              </p>
+            </div>
+          )}
+        </Link>
+        <Link className={classes.link} href="/schedule">
+          {open ? (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Games"}>
+                  <PlayBtn />
+                </Tooltip>
+              </p>
+            </div>
+          ) : (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Games"}>
+                  <PlayBtn />
+                </Tooltip>
+              </p>
+            </div>
+          )}
+        </Link>
+        <Link className={classes.link} href="/standings">
+          {open ? (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Stands"}>
+                  <Clipboard2DataFill />
+                </Tooltip>
+              </p>
+            </div>
+          ) : (
+            <div className={classes.menuItem}>
+              <p>
+                <Tooltip title={"Stands"}>
+                  <Clipboard2DataFill />
+                </Tooltip>
+              </p>
+            </div>
+          )}
+        </Link>
+        {/* <Nav.Link className={classes.link} href="/news">
             {open ? (
               <Box className={classes.menuItem}>
                 <p>
@@ -254,22 +252,21 @@ export const Sidebar = (props: Props) => {
               </Box>
             )}
           </Nav.Link> */}
-          <Button
-            onClick={handleModeSwitch}
-            className={classes.menuItemModeSwitcher}
-          >
-            {mode === "light" ? "Dark" : "Light"}
-          </Button>
-          <Button
-            onClick={
-              state.user.logged_in ? props.logout : () => router.push("/login")
-            }
-            className={classes.menuItemText}
-          >
-            {state.user.logged_in ? <BoxArrowInLeft /> : <BoxArrowInRight />}
-          </Button>
-        </Nav>
-      </NavbarCollapse>
+        <Button
+          onClick={handleModeSwitch}
+          className={classes.menuItemModeSwitcher}
+        >
+          {mode === "light" ? "Dark" : "Light"}
+        </Button>
+        <Button
+          onClick={
+            state.user.logged_in ? props.logout : () => router.push("/login")
+          }
+          className={classes.menuItemText}
+        >
+          {state.user.logged_in ? <BoxArrowInLeft /> : <BoxArrowInRight />}
+        </Button>
+      </Nav>
     </Navbar>
   );
 };
