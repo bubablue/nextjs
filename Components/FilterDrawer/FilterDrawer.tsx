@@ -72,13 +72,13 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
           <div className={classes.drawerBody}>
             <div className={classes.drawerBodyItem}>
               <div className={classes.drawerBodyItemHeader}>
-                <h1
+                <h4
                   style={{
                     color: Colours.BW_02[mode],
                   }}
                 >
                   Position
-                </h1>
+                </h4>
               </div>
               <div className={classes.drawerBody}>
                 <Select
@@ -107,13 +107,13 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
             </div>
             <div className={classes.drawerBodyItem}>
               <div className={classes.drawerBodyItemHeader}>
-                <h1
+                <h4
                   style={{
                     color: Colours.BW_02[mode],
                   }}
                 >
                   Team
-                </h1>
+                </h4>
               </div>
               <div className={classes.drawerBodyItemBody}>
                 <Select
