@@ -33,7 +33,6 @@ import useStyles from "../../styles/teams";
 export const PlayersGeneral = () => {
   const [teams, setTeams] = React.useState<any[]>([]);
   const [rowsData, setRowsData] = React.useState<any[]>([]);
-  const { mode } = useTeams();
 
   const NHL_URL =
     "https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster";
@@ -499,7 +498,6 @@ export const PlayersGeneral = () => {
                       component="th"
                       scope="row"
                       className={classes.listItem}
-                      style={{ color: Colours.BW_02[mode] }}
                     >
                       <TeamLogo
                         team={player.team}
@@ -511,21 +509,18 @@ export const PlayersGeneral = () => {
                       component="th"
                       scope="row"
                       className={classes.listItem}
-                      style={{ color: Colours.BW_02[mode] }}
                     >
                       {player.name}
                     </TableCell>
                     <TableCell
                       align="left"
                       className={classes.listItem}
-                      style={{ color: Colours.BW_02[mode] }}
                     >
                       {player.position}
                     </TableCell>
                     <TableCell
                       align="left"
                       onClick={() => handleClick(player.id)}
-                      style={{ cursor: "pointer", color: Colours.BW_02[mode] }}
                       className={classes.listItem}
                     >
                       {player.id}
@@ -551,7 +546,6 @@ export const PlayersGeneral = () => {
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
               className={classes.pagination}
-              style={{ color: Colours.BW_02[mode] }}
             />
           </TableRow>
         </Table>
