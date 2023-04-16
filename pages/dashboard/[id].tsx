@@ -18,14 +18,13 @@ export const TeamStats = () => {
   const [display, setDisplay] = React.useState<boolean>(false);
   const [data, setData] = React.useState<any>([]);
 
-  let getStats = useCallback(
-    async () => {
-      const response = await axios.get(`https://statsapi.web.nhl.com/api/v1/schedule?startDate=2023-01-01&endDate=2023-12-31&hydrate=team,linescore,metadata,seriesSummary(series)&teamId=${id}&site=en_nhlCA&expand=schedule.teams,schedule.linescore,schedule.broadcasts.all,schedule.ticket,schedule.game.seriesSummary`);
-      setData(response.data.dates);
-      return response.data;
-    },
-    [id]
-  );
+  let getStats = useCallback(async () => {
+    const response = await axios.get(
+      `https://statsapi.web.nhl.com/api/v1/schedule?startDate=2023-01-01&endDate=2023-12-31&hydrate=team,linescore,metadata,seriesSummary(series)&teamId=${id}&site=en_nhlCA&expand=schedule.teams,schedule.linescore,schedule.broadcasts.all,schedule.ticket,schedule.game.seriesSummary`
+    );
+    setData(response.data.dates);
+    return response.data;
+  }, [id]);
 
   let getTeamName = useCallback(async () => {
     const response = await axios.get(
@@ -60,7 +59,6 @@ export const TeamStats = () => {
     setDisplay(!display);
   };
 
-
   return !isMobile ? (
     <div className={classes.root}>
       <h1 className={classes.title}>Team Stats</h1>
@@ -73,10 +71,13 @@ export const TeamStats = () => {
           <div>
             {data.map((stats: any) => {
               return (
-                <div>
+                <div key={stats.games[0].teams.home.team.id}>
                   {stats.games.map((game: any) => {
                     return (
-                      <Card className={classes.accordion}>
+                      <Card
+                        className={classes.accordion}
+                        key={game.teams.home.team.id}
+                      >
                         <div className={classes.teams}>
                           <div className={classes.date} onClick={handleChange}>
                             <h3>
@@ -139,7 +140,7 @@ export const TeamStats = () => {
                           {game.tickets?.map((ticket: any) => {
                             return (
                               game.status.abstractGameState != "Final" && (
-                                <div>
+                                <div key={ticket.ticketLink}>
                                   <Button
                                     href={ticket.ticketLink}
                                     className={classes.link}
@@ -173,10 +174,13 @@ export const TeamStats = () => {
           <div>
             {data.map((stats: any) => {
               return (
-                <div>
+                <div key={stats.games[0].teams.home.team.id}>
                   {stats.games.map((game: any) => {
                     return (
-                      <Card className={classes.accordion}>
+                      <Card
+                        className={classes.accordion}
+                        key={game.teams.home.team.id}
+                      >
                         <div className={classes.teams}>
                           <div className={classes.date}>
                             <h3>

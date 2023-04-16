@@ -92,6 +92,7 @@ export const Players = (props: Props) => {
                         )
                       }
                       style={{ cursor: "pointer" }}
+                      key={key}
                     >
                       {
                         data.liveData.boxscore.teams.home.players[key].person
@@ -134,6 +135,7 @@ export const Players = (props: Props) => {
                         )
                       }
                       style={{ cursor: "pointer" }}
+                      key={key}
                     >
                       {
                         data.liveData.boxscore.teams.away.players[key].person
