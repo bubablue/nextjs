@@ -1,13 +1,13 @@
 import { Button, Card } from "@material-ui/core";
+import { useMediaQuery } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import { useQuery } from "react-query";
-import { TeamLogo } from "../../Components/TeamLogo";
-import useStyles from "../../styles/team";
 import { Players } from "../../Components/Stats/Players";
 import { Stats } from "../../Components/Stats/Stats";
-import { useMediaQuery } from "@mui/material";
+import { TeamLogo } from "../../Components/TeamLogo";
+import useStyles from "../../styles/team";
 
 export const TeamStats = () => {
   const router = useRouter();
