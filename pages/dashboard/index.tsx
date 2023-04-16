@@ -6,6 +6,8 @@ import React from "react";
 import { TeamLogo } from "../../Components/TeamLogo";
 import { useTeams } from "../../Context/TeamProvider";
 import Colours from "../../Context/Theme/Colours";
+import Link from "next/link";
+import team from "../../styles/team";
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
@@ -95,7 +97,7 @@ const Dashboard = () => {
         {teams?.map((team: any) => (
           <div className={classes.team} key={team.shortName}>
             {/* <a key={team.name} className={classes.names} href={team.officialSiteUrl}> */}
-            <a
+            <Link
               key={team.name}
               className={classes.names}
               href={`/dashboard/${team.id}`}
@@ -106,7 +108,7 @@ const Dashboard = () => {
                 teamId={team.id}
               />
               {team.name}
-            </a>
+            </Link>
           </div>
         ))}
       </div>
