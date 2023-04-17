@@ -166,6 +166,20 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
     // document.body.style.removeProperty('background')
   };
 
+  useEffect(() => {
+    setMode(mode);
+    if (mode === "dark") {
+      document.documentElement.style.setProperty(
+        "background",
+        "rgb(17, 17, 17)"
+      );
+      document.body.style.setProperty("background", "rgb(17, 17, 17)");
+    } else {
+      document.documentElement.style.removeProperty("background");
+      document.body.style.removeProperty("background");
+    }
+  }, [mode]);
+
   const logOut = async () => {
     const response = await axios.delete("http://localhost:3001/logout", {
       withCredentials: true,
@@ -183,7 +197,7 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
     router.push("/login");
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (typeof window !== "undefined" && localStorage.getItem("UserTheme")) {
       const newMode = localStorage.getItem("UserTheme");
       if (newMode === "light" || newMode === "dark") {
