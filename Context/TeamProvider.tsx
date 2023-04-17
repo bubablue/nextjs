@@ -127,47 +127,46 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
     user: {},
   });
 
-  const checkLoginStatus = async () => {
-    await axios
-      .get("http://localhost:3001/logged_in", { withCredentials: true })
-      .then((r) => r.data)
-      .then((user) => {
-        if (user.logged_in) {
-          handleLogin(user);
-        } else {
-          // handleLogout();
-        }
-      })
-      .catch((err) => {
-        // console.log(err);
-        // handleLogout();
-      });
-  };
+  // const checkLoginStatus = async () => {
+  //   await axios
+  //     .get("http://localhost:3001/logged_in", { withCredentials: true })
+  //     .then((r) => r.data)
+  //     .then((user) => {
+  //       if (user.logged_in) {
+  //         handleLogin(user);
+  //       } else {
+  //         // handleLogout();
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       // console.log(err);
+  //       // handleLogout();
+  //     });
+  // };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    checkLoginStatus();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   checkLoginStatus();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
-  const handleLogin = (user: any) => {
-    setState({
-      loggedInStatus: "LOGGED_IN",
-      user: user,
-    });
-  };
+  // const handleLogin = (user: any) => {
+  //   setState({
+  //     loggedInStatus: "LOGGED_IN",
+  //     user: user,
+  //   });
+  // };
   const toggleDarkMode = () => {
     const newMode = mode === "dark" ? "light" : "dark";
     setMode(newMode);
     if (typeof window !== "undefined") {
       localStorage.setItem("UserTheme", newMode);
     }
-    // document.documentElement.style.removeProperty('background')
-    // document.body.style.removeProperty('background')
+    document.documentElement.style.removeProperty('background')
+    document.body.style.removeProperty('background')
   };
 
   useEffect(() => {
-    setMode(mode);
     if (mode === "dark") {
       document.documentElement.style.setProperty(
         "background",
