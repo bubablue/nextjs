@@ -100,7 +100,7 @@ const Dashboard = () => {
             <Link
               key={team.name}
               className={classes.names}
-              href={`/dashboard/${team.id}`}
+              href={`/team/${team.id}`}
             >
               <TeamLogo
                 classProp={classes.images}
