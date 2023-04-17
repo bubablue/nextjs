@@ -8,6 +8,7 @@ import { Players } from "../../Components/Stats/Players";
 import { Stats } from "../../Components/Stats/Stats";
 import { TeamLogo } from "../../Components/TeamLogo";
 import useStyles from "../../styles/team";
+import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 
 export const TeamStats = () => {
   const router = useRouter();

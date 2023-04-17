@@ -1,13 +1,12 @@
-import { Box, createStyles } from "@material-ui/core";
+import { createStyles } from "@material-ui/core";
 import { Theme } from "@mui/material/styles";
 import { makeStyles } from "@mui/styles";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { TeamLogo } from "../../Components/TeamLogo";
 import { useTeams } from "../../Context/TeamProvider";
 import Colours from "../../Context/Theme/Colours";
-import Link from "next/link";
-import team from "../../styles/team";
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
