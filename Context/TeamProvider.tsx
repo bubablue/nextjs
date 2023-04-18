@@ -197,7 +197,7 @@ export const TeamsProvider = (props: { children?: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined" && localStorage.getItem("UserTheme")) {
+    if (localStorage.getItem("UserTheme")) {
       const newMode = localStorage.getItem("UserTheme");
       if (newMode === "light" || newMode === "dark") {
         setMode(newMode);
