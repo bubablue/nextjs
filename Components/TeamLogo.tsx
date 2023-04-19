@@ -5,7 +5,9 @@ import { TeamsContext } from "../Context/TeamProvider";
 interface props {
   team: string;
   teamId: string;
-  classProp: string;
+  classProp?: string;
+  width?: string;
+  height?: string;
 }
 
 export const TeamLogo = (props: props) => {
@@ -51,6 +53,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Boston_Bruins-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Boston_Bruins.src}
             alt="Boston Bruins"
           />
@@ -60,6 +64,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Buffalo_Sabres-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Buffalo_Sabres.src}
             alt="Buffalo Sabres"
           />
@@ -69,6 +75,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Detroit_Red_Wings-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Detroit_Red_Wings.src}
             alt="Detroit Red Wings"
           />
@@ -78,6 +86,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Florida_Panthers-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Florida_Panthers.src}
             alt="Florida Panthers"
           />
@@ -87,6 +97,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Montreal_Canadiens-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Montreal_Canadiens.src}
             alt="Montreal Canadiens"
           />
@@ -96,6 +108,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Ottawa_Senators-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Ottawa_Senators.src}
             alt="Ottawa Senators"
           />
@@ -105,6 +119,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Tampa_Bay_Lightning-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Tampa_Bay_Lightning.src}
             alt="Tampa Bay Lightning"
           />
@@ -114,6 +130,8 @@ export const TeamLogo = (props: props) => {
           <img
             key={`Toronto_Maple_Leafs-${teamId}`}
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             src={Toronto_Maple_Leafs.src}
             alt="Toronto Maple Leafs"
           />
@@ -122,6 +140,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Carolina_Hurricanes-${teamId}`}
             src={Carolina_Hurricanes.src}
             alt="Carolina Hurricanes"
@@ -131,6 +151,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Columbus_Blue_Jackets-${teamId}`}
             src={Columbus_Blue_Jackets.src}
             alt="Columbus Blue Jackets"
@@ -140,6 +162,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`New_Jersey_Devils-${teamId}`}
             src={New_Jersey_Devils.src}
             alt="New Jersey Devils"
@@ -149,6 +173,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`New_York_Islanders-${teamId}`}
             src={New_York_Islanders.src}
             alt="New York Islanders"
@@ -158,6 +184,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`New_York_Rangers-${teamId}`}
             src={New_York_Rangers.src}
             alt="New York Rangers"
@@ -167,6 +195,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Philadelphia_Flyers-${teamId}`}
             src={Philadelphia_Flyers.src}
             alt="Philadelphia Flyers"
@@ -176,6 +206,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Pittsburgh_Penguins-${teamId}`}
             src={Pittsburgh_Penguins.src}
             alt="Pittsburgh Penguins"
@@ -185,6 +217,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Washington_Capitals-${teamId}`}
             src={Washington_Capitals.src}
             alt="Washington Capitals"
@@ -194,6 +228,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Chicago_Blackhawks-${teamId}`}
             src={Chicago_Blackhawks.src}
             alt="Chicago Blackhawks"
@@ -203,6 +239,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Colorado_Avalanche-${teamId}`}
             src={Colorado_Avalanche.src}
             alt="Colorado Avalanche"
@@ -212,6 +250,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Dallas_Stars-${teamId}`}
             src={Dallas_Stars.src}
             alt="Dallas Stars"
@@ -221,6 +261,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Minnesota_Wild-${teamId}`}
             src={Minnesota_Wild.src}
             alt="Minnesota Wild"
@@ -230,6 +272,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Nashville_Predators-${teamId}`}
             src={Nashville_Predators.src}
             alt="Nashville Predators"
@@ -239,6 +283,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`St_Louis_Blues-${teamId}`}
             src={St_Louis_Blues.src}
             alt="St. Louis Blues"
@@ -248,6 +294,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Winnipeg_Jets-${teamId}`}
             src={Winnipeg_Jets.src}
             alt="Winnipeg Jets"
@@ -257,6 +305,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Anaheim_Ducks-${teamId}`}
             src={Anaheim_Ducks.src}
             alt="Anaheim Ducks"
@@ -266,6 +316,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Arizona_Coyotes-${teamId}`}
             src={Arizona_Coyotes.src}
             alt="Arizona Coyotes"
@@ -275,6 +327,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Calgary_Flames-${teamId}`}
             src={Calgary_Flames.src}
             alt="Calgary Flames"
@@ -284,6 +338,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Edmonton_Oilers-${teamId}`}
             src={Edmonton_Oilers.src}
             alt="Edmonton Oilers"
@@ -293,6 +349,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Los_Angeles_Kings-${teamId}`}
             src={Los_Angeles_Kings.src}
             alt="Los Angeles Kings"
@@ -302,6 +360,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`San_Jose_Sharks-${teamId}`}
             src={San_Jose_Sharks.src}
             alt="San Jose Sharks"
@@ -311,6 +371,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Vancouver_Canucks-${teamId}`}
             src={Vancouver_Canucks.src}
             alt="Vancouver Canucks"
@@ -320,6 +382,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Vegas_Golden_Knights-${teamId}`}
             src={Vegas_Golden_Knights.src}
             alt="Vegas Golden Knights"
@@ -329,6 +393,8 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             className={props.classProp}
+            width={props.width}
+            height={props.height}
             key={`Seattle_Kraken-${props.teamId}`}
             src={Seattle_Kraken.src}
             alt="Seattle Kraken"
