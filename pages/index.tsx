@@ -8,6 +8,7 @@ import { Theme } from "@mui/material/styles";
 import { useRouter } from "next/router";
 import { useTeams } from "../Context/TeamProvider";
 import axios from "axios";
+import { styled } from "@mui/system";
 
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
@@ -68,6 +69,59 @@ const useStyles = makeStyles((theme: Theme) => {
   });
 });
 
+const Root = styled("div")(({ theme }) => ({
+  padding: "100px",
+  paddingBottom: "300px",
+  background: Colours.BW[theme.palette.mode],
+  minHeight: "100vh",
+}));
+const Header = styled("h1")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  justifySelf: "center",
+  alignItems: "center",
+  textAlign: "center",
+  background: Colours.BW_02[theme.palette.mode],
+  border: 0,
+  borderRadius: 10,
+  // boxShadow: theme.palette.mode === 'light' ? "0 3px 5px 2px grey" : 'none',
+  color: Colours.BW[theme.palette.mode],
+  height: 80,
+  padding: "10px",
+  margin: "50px 10% 50px 10%",
+  width: "80%",
+}));
+const Teams = styled("div")(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  flexWrap: "wrap",
+  margin: "10px",
+  background: Colours.BW[theme.palette.mode],
+}));
+
+const Team = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "10px",
+  padding: "20px",
+  // border: '5px solid black',
+  borderRadius: "10px",
+  width: "200px",
+  height: "200px",
+}));
+
+const Name = styled("a")(({ theme }) => ({
+  display: "block",
+  margin: "50px",
+  textDecoration: "none",
+  font: "15px Arial, sans-serif",
+  color: "grey",
+}));
+
 const Dashboard = () => {
   const NHL_URL = "https://statsapi.web.nhl.com/api/v1/teams";
   const [teams, setTeams] = React.useState<any>([]);
@@ -106,30 +160,31 @@ const Dashboard = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <h1 className={classes.header} onClick={handleClick}>
-        NHL TEAMS
-      </h1>
-      <div className={classes.teams}>
+    <Root>
+      <Header onClick={handleClick}>NHL TEAMS</Header>
+      <Teams>
         {teams?.map((team: any) => (
-          <div className={classes.team} key={team.shortName}>
+          <Team key={team.shortName}>
             {/* <a key={team.name} className={classes.names} href={team.officialSiteUrl}> */}
-            <a
+            <Name
+              onClick={() => {
+                router.push(`/team/${team.id}`);
+              }}
               key={team.name}
-              className={classes.names}
-              href={`/team/${team.id}`}
+              style={{ cursor: "pointer" }}
             >
               <TeamLogo
-                classProp={classes.images}
                 team={team.name}
                 teamId={team.id}
+                height="200px"
+                width="200px"
               />
               {team.name}
-            </a>
-          </div>
+            </Name>
+          </Team>
         ))}
-      </div>
-    </div>
+      </Teams>
+    </Root>
   );
 };
 
