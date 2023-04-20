@@ -1,17 +1,13 @@
 import {
   Chip,
   IconButton,
-  Input,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TablePagination,
   TableRow,
-  TableSortLabel,
-  useTheme,
+  useTheme
 } from "@material-ui/core";
 import { Button } from "antd";
 import axios from "axios";
@@ -28,7 +24,19 @@ import { FilterDrawer } from "../../Components/FilterDrawer/FilterDrawer";
 import { TeamLogo } from "../../Components/TeamLogo";
 import { useTeams } from "../../Context/TeamProvider";
 import Colours from "../../Context/Theme/Colours";
-import useStyles from "../../styles/teams";
+// import useStyles from "../../styles/teams";
+import {
+  Cell,
+  FilterBar,
+  FilterBarText,
+  Icon,
+  Pagination,
+  PlayerStatsPaper,
+  Root,
+  Search,
+  Sorting,
+  Title,
+} from "../../styles/teams";
 
 export const PlayersGeneral = () => {
   const [teams, setTeams] = React.useState<any[]>([]);
@@ -37,7 +45,7 @@ export const PlayersGeneral = () => {
 
   const NHL_URL =
     "https://statsapi.web.nhl.com/api/v1/teams?expand=team.roster";
-  const classes = useStyles();
+  // const classes = useStyles();
   const router = useRouter();
 
   async function getTeams() {
@@ -225,9 +233,13 @@ export const PlayersGeneral = () => {
           aria-label="first page"
         >
           {theme.direction === "rtl" ? (
-            <ChevronBarRight className={classes.icons} />
+            <Icon>
+              <ChevronBarRight />
+            </Icon>
           ) : (
-            <ChevronBarLeft className={classes.icons} />
+            <Icon>
+              <ChevronBarLeft />
+            </Icon>
           )}
         </IconButton>
         <IconButton
@@ -236,9 +248,13 @@ export const PlayersGeneral = () => {
           aria-label="previous page"
         >
           {theme.direction === "rtl" ? (
-            <ChevronRight className={classes.icons} />
+            <Icon>
+              <ChevronRight />
+            </Icon>
           ) : (
-            <ChevronLeft className={classes.icons} />
+            <Icon>
+              <ChevronLeft />
+            </Icon>
           )}
         </IconButton>
         <IconButton
@@ -247,9 +263,13 @@ export const PlayersGeneral = () => {
           aria-label="next page"
         >
           {theme.direction === "rtl" ? (
-            <ChevronLeft className={classes.icons} />
+            <Icon>
+              <ChevronLeft />
+            </Icon>
           ) : (
-            <ChevronRight className={classes.icons} />
+            <Icon>
+              <ChevronRight />
+            </Icon>
           )}
         </IconButton>
         <IconButton
@@ -258,9 +278,13 @@ export const PlayersGeneral = () => {
           aria-label="last page"
         >
           {theme.direction === "rtl" ? (
-            <ChevronBarLeft className={classes.icons} />
+            <Icon>
+              <ChevronBarLeft />
+            </Icon>
           ) : (
-            <ChevronBarRight className={classes.icons} />
+            <Icon>
+              <ChevronBarRight />
+            </Icon>
           )}
         </IconButton>
       </div>
@@ -396,9 +420,9 @@ export const PlayersGeneral = () => {
   });
 
   return (
-    <div className={classes.root}>
-      <h1 className={classes.title}>Players</h1>
-      <div className={classes.filterBar}>
+    <Root>
+      <Title>Players</Title>
+      <FilterBar>
         {Object.keys(multisortState).map((key, index) => {
           return (
             JSON.stringify(multisortState) !== JSON.stringify([]) && (
@@ -414,10 +438,10 @@ export const PlayersGeneral = () => {
           );
         })}
         {JSON.stringify(multisortState) === JSON.stringify([]) && (
-          <p className={classes.filterBarText}>No sorting applied</p>
+          <FilterBarText>No sorting applied</FilterBarText>
         )}
-      </div>
-      <div className={classes.filterBar}>
+      </FilterBar>
+      <FilterBar>
         {Object.keys(filterState).map((key) => {
           return (
             filterState[key as keyof filterState] !== "" && (
@@ -430,15 +454,11 @@ export const PlayersGeneral = () => {
         })}
         {JSON.stringify(filterState) ===
           JSON.stringify({ team: "", position: "" }) && (
-          <p className={classes.filterBarText}>No filters applied</p>
+          <FilterBarText>No filters applied</FilterBarText>
         )}
-      </div>
-      <TableContainer component={Paper} className={classes.playerStatsPaper}>
-        <Input
-          className={classes.search}
-          placeholder="Search"
-          onChange={handleSearch}
-        />
+      </FilterBar>
+      <TableContainer component={PlayerStatsPaper} style={{background: Colours.BW[mode]}}>
+        <Search placeholder="Search" onChange={handleSearch} />
         <FilterDrawer state={filterState} setState={setFilterState} />
         <Button
           onClick={() => {
@@ -449,12 +469,17 @@ export const PlayersGeneral = () => {
           {multisort ? "Disable Multisort" : "Enable Multisort"}
         </Button>
         {/* <h1 className={classes.title}>{teams[index].name}</h1> */}
-        <Table aria-label="simple table" className={classes.defaultTable}>
+        <Table
+          aria-label="simple table"
+          style={{
+            background: Colours.BW[mode],
+          }}
+        >
           <TableHead>
             <TableRow>
               {columns.map((column) => (
                 <TableCell key={column.id}>
-                  <TableSortLabel
+                  <Sorting
                     active={
                       multisort
                         ? multisortState.some(
@@ -474,10 +499,9 @@ export const PlayersGeneral = () => {
                         ? handleMultisort(column.id as keyof Data)
                         : handleSorting(column.id as keyof Data)
                     }
-                    className={classes.sorting}
                   >
                     {column.label}
-                  </TableSortLabel>
+                  </Sorting>
                 </TableCell>
               ))}
             </TableRow>
@@ -495,47 +519,41 @@ export const PlayersGeneral = () => {
               .map((player: any) => {
                 return (
                   <TableRow hover={true} key={player.id}>
-                    <TableCell
+                    <Cell
                       component="th"
                       scope="row"
-                      className={classes.listItem}
                       style={{ color: Colours.BW_02[mode] }}
                     >
                       <TeamLogo
                         team={player.team}
                         teamId={player.team}
-                        classProp={classes.images}
+                        height="50px"
+                        width="50px"
                       />
-                    </TableCell>
-                    <TableCell
+                    </Cell>
+                    <Cell
                       component="th"
                       scope="row"
-                      className={classes.listItem}
                       style={{ color: Colours.BW_02[mode] }}
                     >
                       {player.name}
-                    </TableCell>
-                    <TableCell
-                      align="left"
-                      className={classes.listItem}
-                      style={{ color: Colours.BW_02[mode] }}
-                    >
+                    </Cell>
+                    <Cell align="left" style={{ color: Colours.BW_02[mode] }}>
                       {player.position}
-                    </TableCell>
-                    <TableCell
+                    </Cell>
+                    <Cell
                       align="left"
                       onClick={() => handleClick(player.id)}
                       style={{ cursor: "pointer", color: Colours.BW_02[mode] }}
-                      className={classes.listItem}
                     >
                       {player.id}
-                    </TableCell>
+                    </Cell>
                   </TableRow>
                 );
               })}
           </TableBody>
           <TableRow>
-            <TablePagination
+            <Pagination
               rowsPerPageOptions={[5, 10, 25, 50, { label: "All", value: -1 }]}
               colSpan={3}
               count={filteredRows.length}
@@ -550,13 +568,12 @@ export const PlayersGeneral = () => {
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions}
-              className={classes.pagination}
               style={{ color: Colours.BW_02[mode] }}
             />
           </TableRow>
         </Table>
       </TableContainer>
-    </div>
+    </Root>
   );
 };
 export default PlayersGeneral;
