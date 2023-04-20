@@ -1,10 +1,10 @@
-import { Select } from "@material-ui/core";
-import { Button, Drawer } from "antd";
-import Title from "antd/es/typography/Title";
+// import { Button, Drawer } from "antd";
+// import Title from "antd/es/typography/Title";
 import React from "react";
 import { useTeams } from "../../Context/TeamProvider";
 import Colours from "../../Context/Theme/Colours";
-import useStyles from "./styles";
+import { DrawerButton, Div, DrawerMenu, Root, SelectList } from "./styles";
+import { Button } from "@material-ui/core";
 
 interface Props {
   state: {
@@ -25,7 +25,7 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
   const state = props.state;
   const setState = props.setState;
 
-  const classes = useStyles();
+  // const classes = useStyles();
   const showDrawer = () => {
     setVisible(true);
   };
@@ -34,16 +34,25 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
   };
 
   return (
-    <div className={classes.root}>
-      <Button type="primary" onClick={showDrawer} className={classes.filterDrawerButton}>
+    <Root>
+      <Button
+        onClick={showDrawer}
+        variant="contained"
+        style={{
+          background: Colours.BW_02[mode],
+          color: Colours.BW[mode],
+          borderRadius: "10px",
+          border: `1px solid ${Colours.BW_02[mode]}`,
+          margin: "10px",
+        }}
+      >
         Filter
       </Button>
-      <Drawer
+      <DrawerMenu
         placement="right"
         closable={false}
         onClose={onClose}
         open={visible}
-        className={classes.drawer}
         style={{
           display: "flex",
           alignContent: "center",
@@ -59,8 +68,8 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
           background: Colours.BW[mode],
         }}
       >
-        <div className={classes.drawerContent}>
-          <div className={classes.drawerHeader}>
+        <Div>
+          <Div>
             <h1
               style={{
                 color: Colours.BW_02[mode],
@@ -68,10 +77,10 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
             >
               Filters
             </h1>
-          </div>
-          <div className={classes.drawerBody}>
-            <div className={classes.drawerBodyItem}>
-              <div className={classes.drawerBodyItemHeader}>
+          </Div>
+          <Div>
+            <Div>
+              <Div>
                 <h4
                   style={{
                     color: Colours.BW_02[mode],
@@ -79,9 +88,9 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                 >
                   Position
                 </h4>
-              </div>
-              <div className={classes.drawerBody}>
-                <Select
+              </Div>
+              <Div>
+                <SelectList
                   native
                   value={state.position}
                   inputProps={{
@@ -94,7 +103,6 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                       position: event.target.value as string,
                     });
                   }}
-                  className={classes.select}
                 >
                   <option aria-label="None" value="" />
                   <option value={"Goalie"}>Goalie</option>
@@ -102,11 +110,11 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                   <option value={"Left Wing"}>Left Wing</option>
                   <option value={"Right Wing"}>Right Wing</option>
                   <option value={"Center"}>Center</option>
-                </Select>
-              </div>
-            </div>
-            <div className={classes.drawerBodyItem}>
-              <div className={classes.drawerBodyItemHeader}>
+                </SelectList>
+              </Div>
+            </Div>
+            <Div>
+              <Div>
                 <h4
                   style={{
                     color: Colours.BW_02[mode],
@@ -114,9 +122,9 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                 >
                   Team
                 </h4>
-              </div>
-              <div className={classes.drawerBodyItemBody}>
-                <Select
+              </Div>
+              <Div>
+                <SelectList
                   native
                   value={state.team}
                   inputProps={{
@@ -129,7 +137,6 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                       team: event.target.value as string,
                     });
                   }}
-                  className={classes.select}
                 >
                   <option aria-label="None" value="" />
                   <option>New Jersey Devils</option>
@@ -164,9 +171,9 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                   <option>Arizona Coyotes</option>
                   <option>Vegas Golden Knights</option>
                   <option>Seattle Kraken</option>
-                </Select>
-              </div>
-            </div>
+                </SelectList>
+              </Div>
+            </Div>
             {/* <div className={classes.drawerBodyItem}>
               <div className={classes.drawerBodyItemHeader}>
                 <Title
@@ -235,14 +242,14 @@ export const FilterDrawer: React.FC<Props> = (props: Props) => {
                 </Select>
               </div>
             </div> */}
-          </div>
-        </div>
-        <div className={classes.drawerButtons}>
-          <Button type="primary" onClick={onClose}>
+          </Div>
+        </Div>
+        <div>
+          <DrawerButton onClick={onClose}>
             Close
-          </Button>
+          </DrawerButton>
         </div>
-      </Drawer>
-    </div>
+      </DrawerMenu>
+    </Root>
   );
 };
