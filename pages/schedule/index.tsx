@@ -1,17 +1,30 @@
-import { Accordion, Button, createStyles } from "@material-ui/core";
-import { Theme } from "@mui/material/styles";
-import { makeStyles } from "@mui/styles";
+import { Button } from "@material-ui/core";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useCallback, useState } from "react";
 import { useQuery } from "react-query";
-import { useRouter } from "next/router";
 import { TeamLogo } from "../../Components/TeamLogo";
-import Colours from "../../Context/Theme/Colours";
 import { useTeams } from "../../Context/TeamProvider";
-import useStyles from "../../styles/schedule"
+import {
+  DateDiv,
+  Game,
+  LinkButton,
+  Live,
+  MuiAccordion,
+  Root,
+  ScheduleDiv,
+  Score,
+  Section,
+  Subtitle,
+  Teams,
+  Time,
+  Title,
+  TitleBox,
+  Versus,
+} from "../../styles/schedule";
 
 export const Schedule = () => {
-  const classes = useStyles({});
+  // const classes = useStyles({});
   const [schedule, setSchedule] = useState<any>([]);
   const [dates, setDates] = useState<any>([]);
   const array = new Array(100).fill(true);
@@ -93,22 +106,19 @@ export const Schedule = () => {
       case "Live":
         return (
           <div>
-            <p
-              className={classes.live}
-              onClick={() => router.push(`/games/${game.gamePk}`)}
-            >
+            <Live onClick={() => router.push(`/games/${game.gamePk}`)}>
               LIVE
-            </p>
-            <p className={classes.score}>
+            </Live>
+            <Score>
               {game.teams.home.score} - {game.teams.away.score}
-            </p>
+            </Score>
           </div>
         );
       case "Final":
         return (
-          <p className={classes.score}>
+          <Score>
             {game.teams.home.score} - {game.teams.away.score}
-          </p>
+          </Score>
         );
       case "Postponed":
         return <p>Not Played Yet</p>;
@@ -125,37 +135,35 @@ export const Schedule = () => {
     return date.games.map(
       (game: { gamePk?: any; teams?: any; gameDate: any; status?: any }) => {
         return (
-          <div
-            className={classes.game}
+          <Game
             key={`game-${game.gamePk}-date-${date.date}`}
             id={`schedule-${game.gamePk}-date-${date.date}`}
           >
-            <p
-              className={classes.teams}
-              key={`${game.teams.home.team.name}-home`}
-            >
+            <Teams key={`${game.teams.home.team.name}-home`}>
               {game.teams.home.team.name} vs {game.teams.away.team.name}
-            </p>
-            <div
-              className={classes.versus}
+            </Teams>
+            <Versus
               key={`${game.teams.home.team.name}-home-vs-${game.teams.away.team.name}-away`}
             >
               <TeamLogo
                 team={game.teams.home.team.name}
                 teamId={game.teams.home.team.id}
-                classProp={classes.images}
+                height={"70px"}
+                width={"70px"}
+                style={{ marginRight: "10px", marginLeft: "10px" }}
                 key={`${game.teams.home.team.name}-home-logo`}
               />
               <p>VS</p>
               <TeamLogo
                 team={game.teams.away.team.name}
                 teamId={game.teams.away.team.id}
-                classProp={classes.images}
+                height={"70px"}
+                width={"70px"}
+                style={{ marginRight: "10px", marginLeft: "10px" }}
                 key={`${game.teams.away.team.name}-away-logo`}
               />
-            </div>
-            <p
-              className={classes.time}
+            </Versus>
+            <Time
               key={`${game.teams.home.team.name}-home-vs-${game.teams.away.team.name}-away-time`}
             >
               {`${new Date(game.gameDate).getHours()}:${
@@ -163,21 +171,20 @@ export const Schedule = () => {
                   ? "00"
                   : new Date(game.gameDate).getMinutes()
               }`}
-            </p>
+            </Time>
             {status(game)}
             {(scheduled(game) ||
               game.status.abstractGameState === "Preview") && (
-              <Button
-                className={classes.link}
+              <LinkButton
                 onClick={() => {
                   window.open("https://www.espnplayer.com/home", "_blank");
                 }}
                 key={`button-${game.gamePk}-date-${date.date}`}
               >
                 Watch Live on ESPN
-              </Button>
+              </LinkButton>
             )}
-          </div>
+          </Game>
         );
       }
     );
@@ -205,17 +212,16 @@ export const Schedule = () => {
     });
   };
 
-
   return (
-    <div className={classes.root}>
+    <Root>
       <div>
-        <div className={classes.titleBox}>
-          <h1 className={classes.title}>Schedule</h1>
-        </div>
-        <div className={classes.titleBox}>
+        <TitleBox>
+          <Title>Schedule</Title>
+        </TitleBox>
+        <TitleBox>
           <Button
             variant="contained"
-            style={{marginRight: '1rem'}}
+            style={{ marginRight: "1rem" }}
             onClick={() => {
               openAll();
             }}
@@ -223,62 +229,52 @@ export const Schedule = () => {
             Open All
           </Button>
           <Button
-            variant="contained" 
-            style={{marginLeft: '1rem'}}
+            variant="contained"
+            style={{ marginLeft: "1rem" }}
             onClick={() => {
               closeAll();
             }}
           >
             Close All
           </Button>
-        </div>
+        </TitleBox>
         {dates.map((date: any, index: any) => {
           return (
             isToday(date) && (
-              <div
-                className={classes.section}
-                key={`section-${date.date}-today`}
-              >
-                <Accordion
+              <Section key={`section-${date.date}-today`}>
+                <MuiAccordion
                   expanded={true}
-                  className={classes.accordion}
                   key={`accordion-${date.date}-today`}
                 >
-                  <div
-                    className={classes.date}
+                  <DateDiv
                     onClick={() => {
                       setGames();
                     }}
                     key={`title-${date.date}-today`}
                   >
                     <h2>Available Today</h2>
-                  </div>
-                  <div
-                    className={classes.schedule}
-                    key={`schedule-${date.date}-today`}
-                  >
+                  </DateDiv>
+                  <ScheduleDiv key={`schedule-${date.date}-today`}>
                     {scheduledGames(date)}
-                  </div>
-                </Accordion>
-              </div>
+                  </ScheduleDiv>
+                </MuiAccordion>
+              </Section>
             )
           );
         })}
       </div>
-      <div className={classes.titleBox}>
-        <h2 className={classes.title}>Scheduled Games</h2>
-      </div>
-      <div className={classes.section}>
+      <TitleBox>
+        <Subtitle>Scheduled Games</Subtitle>
+      </TitleBox>
+      <Section>
         {dates.map((date: any, index: number) => {
           if (index > 3) {
             return (
-              <Accordion
+              <MuiAccordion
                 expanded={expanded[index]}
-                className={classes.accordion}
                 key={`accordion-${date.date}-all`}
               >
-                <div
-                  className={classes.date}
+                <DateDiv
                   onClick={() => {
                     setExpanded((prev) => {
                       const newExpanded = [...prev];
@@ -289,16 +285,16 @@ export const Schedule = () => {
                   key={`title-${date.date}`}
                 >
                   <h2 key={`date-${date.date}`}>{date.date}</h2>
-                </div>
-                <div className={classes.schedule} key={`schedule-${index}`}>
+                </DateDiv>
+                <ScheduleDiv key={`schedule-${index}`}>
                   {scheduledGames(date)}
-                </div>
-              </Accordion>
+                </ScheduleDiv>
+              </MuiAccordion>
             );
           }
         })}
-      </div>
-    </div>
+      </Section>
+    </Root>
   );
 };
 
