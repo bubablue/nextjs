@@ -183,11 +183,54 @@ export const Schedule = () => {
     );
   };
 
+  // close all accordions
+  const closeAll = () => {
+    dates.map((date: any) => {
+      setExpanded((prev) => {
+        const newExpanded = [...prev];
+        newExpanded[dates.indexOf(date)] = false;
+        return newExpanded;
+      });
+    });
+  };
+
+  // open all accordions
+  const openAll = () => {
+    dates.map((date: any) => {
+      setExpanded((prev) => {
+        const newExpanded = [...prev];
+        newExpanded[dates.indexOf(date)] = true;
+        return newExpanded;
+      });
+    });
+  };
+
+
   return (
     <div className={classes.root}>
       <div>
         <div className={classes.titleBox}>
           <h1 className={classes.title}>Schedule</h1>
+        </div>
+        <div className={classes.titleBox}>
+          <Button
+            variant="contained"
+            style={{marginRight: '1rem'}}
+            onClick={() => {
+              openAll();
+            }}
+          >
+            Open All
+          </Button>
+          <Button
+            variant="contained" 
+            style={{marginLeft: '1rem'}}
+            onClick={() => {
+              closeAll();
+            }}
+          >
+            Close All
+          </Button>
         </div>
         {dates.map((date: any, index: any) => {
           return (
