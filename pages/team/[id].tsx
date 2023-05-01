@@ -1,4 +1,3 @@
-import { Button, Card } from "@material-ui/core";
 import { useMediaQuery } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -7,12 +6,13 @@ import { useQuery } from "react-query";
 import { Players } from "../../Components/Stats/Players";
 import { Stats } from "../../Components/Stats/Stats";
 import { TeamLogo } from "../../Components/TeamLogo";
-import useStyles from "../../styles/team";
+import { Accordion, Components, DateDiv, LinkButton, Root, Score, Section, Subtitle, Teams, Title } from "../../styles/team";
+// import useStyles from "../../styles/team";
 
 export const TeamStats = () => {
   const router = useRouter();
   const { id } = router.query;
-  const classes = useStyles();
+  // const classes = useStyles();
   const isMobile = useMediaQuery("(max-width: 1000px)");
 
   const [display, setDisplay] = React.useState<boolean>(false);
@@ -60,12 +60,12 @@ export const TeamStats = () => {
   };
 
   return !isMobile ? (
-    <div className={classes.root}>
-      <h1 className={classes.title}>Team Stats</h1>
-      <div className={classes.subtitle}>
+    <Root>
+      <Title>Team Stats</Title>
+      <Subtitle>
         <h2>{teamName}</h2>
-      </div>
-      <div className={classes.section}>
+      </Subtitle>
+      <Section>
         <h2>Team Stats</h2>
         {
           <div>
@@ -74,12 +74,11 @@ export const TeamStats = () => {
                 <div key={stats.games[0].teams.home.team.id}>
                   {stats.games.map((game: any) => {
                     return (
-                      <Card
-                        className={classes.accordion}
+                      <Accordion
                         key={game.teams.home.team.id}
                       >
-                        <div className={classes.teams}>
-                          <div className={classes.date} onClick={handleChange}>
+                        <Teams>
+                          <DateDiv onClick={handleChange}>
                             <h3>
                               {game.teams.home.team.name} -{" "}
                               {game.teams.away.team.name}
@@ -95,7 +94,7 @@ export const TeamStats = () => {
                                 }
                               )}
                             </p>
-                          </div>
+                          </DateDiv>
                           {display ? (
                             <div>
                               <h3
@@ -107,52 +106,53 @@ export const TeamStats = () => {
                                 }}
                               >
                                 <TeamLogo
-                                  classProp={classes.images}
+                                  height="300px"
+                                  width="300px"
                                   team={game.teams.home.team.name}
                                   teamId={game.teams.home.team.id}
                                 />
-                                <div className={classes.score}>
+                                <Score>
                                   {game.teams.home.score} -{" "}
                                   {game.teams.away.score}
-                                </div>
+                                </Score>
                                 <TeamLogo
-                                  classProp={classes.images}
+                                  height="300px"
+                                  width="300px"
                                   team={game.teams.away.team.name}
                                   teamId={game.teams.home.team.id}
                                 />
                               </h3>
                             </div>
                           ) : (
-                            <div className={classes.components}>
+                            <Components>
                               <h1>Stats</h1>
                               <Stats gamePk={{ gamePk: game.gamePk }}>
                                 <Players gamePk={{ gamePk: game.gamePk }}>
-                                  <div className={classes.score}>
+                                  <Score>
                                     {game.teams.home.score} -{" "}
                                     {game.teams.away.score}
-                                  </div>
+                                  </Score>
                                 </Players>
                               </Stats>
-                            </div>
+                            </Components>
                           )}
-                        </div>
+                        </Teams>
                         <div>
                           {game.tickets?.map((ticket: any) => {
                             return (
                               game.status.abstractGameState != "Final" && (
                                 <div key={ticket.ticketLink}>
-                                  <Button
+                                  <LinkButton
                                     href={ticket.ticketLink}
-                                    className={classes.link}
                                   >
                                     {ticket.ticketType}
-                                  </Button>
+                                  </LinkButton>
                                 </div>
                               )
                             );
                           })}
                         </div>
-                      </Card>
+                      </Accordion>
                     );
                   })}
                 </div>
@@ -160,15 +160,15 @@ export const TeamStats = () => {
             })}
           </div>
         }
-      </div>
-    </div>
+      </Section>
+    </Root>
   ) : (
-    <div className={classes.root}>
-      <h1 className={classes.title}>Team Stats</h1>
-      <div className={classes.subtitle}>
+    <Root>
+      <Title>Team Stats</Title>
+      <Subtitle>
         <h2>{teamName}</h2>
-      </div>
-      <div className={classes.section}>
+      </Subtitle>
+      <Section>
         <h2>Team Stats</h2>
         {
           <div>
@@ -177,12 +177,11 @@ export const TeamStats = () => {
                 <div key={stats.games[0].teams.home.team.id}>
                   {stats.games.map((game: any) => {
                     return (
-                      <Card
-                        className={classes.accordion}
+                      <Accordion
                         key={game.teams.home.team.id}
                       >
-                        <div className={classes.teams}>
-                          <div className={classes.date}>
+                        <Teams>
+                          <DateDiv>
                             <h3>
                               {game.teams.home.team.name} -{" "}
                               {game.teams.away.team.name}
@@ -198,7 +197,7 @@ export const TeamStats = () => {
                                 }
                               )}
                             </p>
-                          </div>
+                          </DateDiv>
                           <div>
                             <h3
                               style={{
@@ -209,39 +208,40 @@ export const TeamStats = () => {
                               }}
                             >
                               <TeamLogo
-                                classProp={classes.imagesSmall}
+                                height="60px"
+                                width="60px"
                                 team={game.teams.home.team.name}
                                 teamId={game.teams.home.team.id}
                               />
-                              <div className={classes.score}>
+                              <Score>
                                 {game.teams.home.score} -{" "}
                                 {game.teams.away.score}
-                              </div>
+                              </Score>
                               <TeamLogo
-                                classProp={classes.imagesSmall}
+                                height="60px"
+                                width="60px"
                                 team={game.teams.away.team.name}
                                 teamId={game.teams.home.team.id}
                               />
                             </h3>
                           </div>
-                        </div>
+                        </Teams>
                         <div>
                           {game.tickets?.map((ticket: any) => {
                             return (
                               game.status.abstractGameState != "Final" && (
                                 <div>
-                                  <Button
+                                  <LinkButton
                                     href={ticket.ticketLink}
-                                    className={classes.link}
                                   >
                                     {ticket.ticketType}
-                                  </Button>
+                                  </LinkButton>
                                 </div>
                               )
                             );
                           })}
                         </div>
-                      </Card>
+                      </Accordion>
                     );
                   })}
                 </div>
@@ -249,8 +249,8 @@ export const TeamStats = () => {
             })}
           </div>
         }
-      </div>
-    </div>
+      </Section>
+    </Root>
   );
 };
 
