@@ -12,6 +12,7 @@ const nextConfig = {
       remotes: {},
       exposes: {
         './Sidebar': './Components/Sidebar/Sidebar.tsx',
+        './App': './pages/_app.js',
       },
       shared: ["react", "react-dom"],
     };
