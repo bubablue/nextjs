@@ -8,7 +8,7 @@ const nextConfig = {
     const mfConf = {
       name: 'nhlTeams',
       library: { type: config.output.libraryTarget, name: 'nhlTeams' },
-      filename: 'static/runtime/remoteEntry.js',
+      filename: 'static/chunks/remoteEntry.js',
       remotes: {},
       exposes: {
         './Sidebar': './components/Sidebar/Sidebar.tsx',
