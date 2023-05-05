@@ -11,6 +11,7 @@ const nextConfig = {
       filename: 'static/chunks/remoteEntry.js',
       remotes: {},
       exposes: {
+        './Sidebar': './Components/Sidebar/Sidebar.tsx',
       },
       shared: ["react", "react-dom"],
     };
