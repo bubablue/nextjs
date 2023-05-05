@@ -2,23 +2,21 @@ import { Button, Tooltip } from "@material-ui/core";
 import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import {
-  BoxArrowInLeft,
-  BoxArrowInRight,
   Clipboard2DataFill,
   House,
   List,
   PeopleFill,
   PlayBtn,
-  X,
+  X
 } from "react-bootstrap-icons";
 import NavbarToggle from "react-bootstrap/NavbarToggle";
 // import { useNavigate } from "react-router-dom";
 // import { createStyles } from "@material-ui/core";
 // import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/system";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTeams } from "../../Context/TeamProvider";
-import { styled } from "@mui/system";
 
 interface Props {
   logout?: React.MouseEventHandler<HTMLButtonElement> | undefined;
