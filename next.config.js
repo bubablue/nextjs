@@ -2,9 +2,6 @@ const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  optimization: {
-    runtimeChunk: false
-  },
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
   webpack: (config, { isServer }) => {
     config.plugins.push(
