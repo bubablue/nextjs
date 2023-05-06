@@ -225,3 +225,4 @@
 // };
 
 // export default Stats;
+export default {};

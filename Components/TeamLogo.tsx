@@ -407,3 +407,4 @@
 //   }
 //   return switchTeams(props.team, props.teamId);
 // };
+export default {};
