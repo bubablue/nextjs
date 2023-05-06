@@ -20,7 +20,6 @@ export default function App({ Component, pageProps }) {
           </div>
         </NhlThemeProvider>
       </TeamsProvider> */}
-      <Component {...pageProps} />
     </QueryClientProvider>
   );
 }
