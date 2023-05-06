@@ -6,15 +6,15 @@ const nextConfig = {
   webpack: (config, { isServer }) => {
     config.plugins.push(
       new NextFederationPlugin({
-        name: "nhlTeams",
+        name: "nhlteams",
         filename: "static/remoteEntry.js",
         exposes: {
-          './App': './pages/_app.js',
-          './Document': './pages/_document.js',
-          './TeamsProvider': './Context/TeamProvider.tsx',
-          './Theme/ThemeProvider': './Context/Theme/ThemeProvider.tsx',
-          './Sidebar': './Components/Sidebar/Sidebar.tsx',
-          './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar.tsx',
+          './App': './pages/_app',
+          './Document': './pages/_document',
+          './TeamsProvider': './Context/TeamProvider',
+          './Theme/ThemeProvider': './Context/Theme/ThemeProvider',
+          './Sidebar': './Components/Sidebar/Sidebar',
+          './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar',
         },
         shared: {},
       })
