@@ -5,6 +5,8 @@ import TeamsProvider, { useTeams } from "../Context/TeamProvider";
 import NhlThemeProvider from "../Context/Theme/ThemeProvider";
 import Sidebar from "../Components/Sidebar/Sidebar";
 import UserSidebar from "../Components/Sidebar/UserSidebar/UserSidebar";
+import '@module-federation/nextjs-mf/src/include-defaults';
+
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
