@@ -9,12 +9,7 @@ const nextConfig = {
         name: "nhlTeams",
         filename: "static/remoteEntry.js",
         exposes: {
-          './App': './pages/_app.js',
-          './Document': './pages/_document.js',
-          './TeamsProvider': './Context/TeamProvider.tsx',
-          './Theme/ThemeProvider': './Context/Theme/ThemeProvider.tsx',
-          './Sidebar': './Components/Sidebar/Sidebar.tsx',
-          './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar.tsx',
+          './App': './pages/_app',
         },
         shared: {},
       })
