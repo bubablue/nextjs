@@ -13,7 +13,7 @@ const nextConfig = {
       exposes: {
         './App': './pages/_app.js',
       },
-      shared: ["react", "react-dom"],
+      shared: [],
     };
     config.plugins.push(new NextFederationPlugin(mfConf, options));
     if (!isServer) {
