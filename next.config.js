@@ -16,18 +16,7 @@ const nextConfig = {
           './Sidebar': './Components/Sidebar/Sidebar',
           './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar',
         },
-        shared: {
-          react: {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          },
-          "react-dom": {
-            eager: true,
-            singleton: true,
-            requiredVersion: false,
-          }
-        },
+        shared: {},
       })
     );
     return config;
