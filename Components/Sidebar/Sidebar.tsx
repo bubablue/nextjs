@@ -331,13 +331,13 @@ export const Sidebar = (props: Props) => {
         >
           {mode === "light" ? "Dark" : "Light"}
         </ModeSwitcher>
-        {/* <NavButton
+        <NavButton
           onClick={
             state.user.logged_in ? props.logout : () => router.push("/login")
           }
         >
           {state.user.logged_in ? <BoxArrowInLeft /> : <BoxArrowInRight />}
-        </NavButton> */}
+        </NavButton>
       </Navigation>
     </Drawer>
   );
