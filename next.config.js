@@ -13,7 +13,12 @@ const nextConfig = {
       exposes: {
         './Sidebar': './Components/Sidebar/Sidebar.tsx',
         './App': './pages/_app.js',
+        './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar.tsx',
+        './FilterDrawer': './Components/FilterDrawer/FilterDrawer.tsx',
+        ',/Stats': './Components/Stats/Stats.tsx',
+        './Players': './Components/Stats/Players.tsx',
       },
+
       shared: ["react", "react-dom"],
     };
     config.plugins.push(new NextFederationPlugin(mfConf, options));
