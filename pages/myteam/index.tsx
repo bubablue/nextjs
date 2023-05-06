@@ -253,7 +253,8 @@ export const MyTeam = () => {
                 <TeamLogo
                   team={player.people[0].currentTeam.name}
                   teamId={player.people[0].currentTeam.id}
-                  classProp={classes.images}
+                  height="200px"
+                  width="200px"
                 />
                 <Box className={classes.player}>
                   <h2

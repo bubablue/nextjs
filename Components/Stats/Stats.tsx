@@ -66,7 +66,8 @@ export const Stats = (props: Props) => {
             <TeamLogo
               team={data.liveData.linescore.teams.home.team.name}
               teamId={`${data.gameData.gamePk}${data.gameData.teams.home.id}`}
-              classProp={classes.images}
+              height="300px"
+              width="300px"
             />
           }
         </div>
@@ -149,7 +150,8 @@ export const Stats = (props: Props) => {
             <TeamLogo
               team={data.liveData.linescore.teams.away.team.name}
               teamId={`${data.gameData.gamePk}${data.gameData.teams.away.id}`}
-              classProp={classes.images}
+              height="300px"
+              width="300px"
             />
           }
         </div>
