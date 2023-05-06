@@ -3,7 +3,7 @@ const { NextFederationPlugin } = require("@module-federation/nextjs-mf");
 const nextConfig = {
   reactStrictMode: false,
   optimization: {
-    runtimeChunk: false,
+    runtimeChunk: false
   },
   pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
   webpack: (config, { isServer }) => {
@@ -12,14 +12,25 @@ const nextConfig = {
         name: "nhlteams",
         filename: "static/remoteEntry.js",
         exposes: {
-          "./App": "./pages/_app",
-          "./Document": "./pages/_document",
-          "./TeamsProvider": "./Context/TeamProvider",
-          "./Theme/ThemeProvider": "./Context/Theme/ThemeProvider",
-          "./Sidebar": "./Components/Sidebar/Sidebar.tsx",
-          "./UserSidebar": "./Components/Sidebar/UserSidebar/UserSidebar",
+          './App': './pages/_app',
+          './Document': './pages/_document',
+          './TeamsProvider': './Context/TeamProvider',
+          './Theme/ThemeProvider': './Context/Theme/ThemeProvider',
+          './Sidebar': './Components/Sidebar/Sidebar.tsx',
+          './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar',
         },
-        shared: {},
+        shared: {
+          'react': {
+            eager: true,
+            singleton: true,
+            requiredVersion: false,
+          },
+          'react-dom': {
+            eager: true,
+            singleton: true,
+            requiredVersion: false,
+          }
+        },
       })
     );
     return config;
