@@ -255,11 +255,3 @@
 // };
 
 // export default TeamStats;
-import React from 'react'
-
-export const index = () => {
-  return (
-    <div>[id]</div>
-  )
-}
-export default index
