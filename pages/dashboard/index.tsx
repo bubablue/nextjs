@@ -68,6 +68,7 @@ const Dashboard = () => {
     setTeams(data.teams);
   };
   const { logout } = useTeams();
+  // const classes = useStyles();
 
   React.useEffect(() => {
     getTeams();
