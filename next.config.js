@@ -9,7 +9,7 @@ const nextConfig = {
         name: "nhlTeams",
         filename: "static/remoteEntry.js",
         exposes: {
-          './_app': './pages/_app.js',
+          './App': './pages/_app.js',
         },
         shared: {},
       })
