@@ -123,8 +123,7 @@ export const Standings = () => {
                   <TeamLogo
                     team={team.team.name}
                     teamId={team.team.name}
-                    height="200px"
-                    width="200px"
+                    classProp={classes.images}
                     key={`${team.team.name}-logo`}
                   />
                   <div className={classes.team} key={`${team.team.name}-main`}>

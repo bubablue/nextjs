@@ -5,6 +5,7 @@ import { TeamsContext } from "../Context/TeamProvider";
 interface props {
   team: string;
   teamId: string;
+  classProp?: string;
   width?: string;
   height?: string;
   style?: React.CSSProperties;
@@ -52,6 +53,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Boston_Bruins-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -63,6 +65,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Buffalo_Sabres-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -74,6 +77,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Detroit_Red_Wings-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -85,6 +89,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Florida_Panthers-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -96,6 +101,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Montreal_Canadiens-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -107,6 +113,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Ottawa_Senators-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -118,6 +125,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Tampa_Bay_Lightning-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -129,6 +137,7 @@ export const TeamLogo = (props: props) => {
         return (
           <img
             key={`Toronto_Maple_Leafs-${teamId}`}
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -139,6 +148,7 @@ export const TeamLogo = (props: props) => {
       case "Carolina Hurricanes":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -150,6 +160,7 @@ export const TeamLogo = (props: props) => {
       case "Columbus Blue Jackets":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -161,6 +172,7 @@ export const TeamLogo = (props: props) => {
       case "New Jersey Devils":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -172,6 +184,7 @@ export const TeamLogo = (props: props) => {
       case "New York Islanders":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -183,6 +196,7 @@ export const TeamLogo = (props: props) => {
       case "New York Rangers":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -194,6 +208,7 @@ export const TeamLogo = (props: props) => {
       case "Philadelphia Flyers":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -205,6 +220,7 @@ export const TeamLogo = (props: props) => {
       case "Pittsburgh Penguins":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -216,6 +232,7 @@ export const TeamLogo = (props: props) => {
       case "Washington Capitals":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -227,6 +244,7 @@ export const TeamLogo = (props: props) => {
       case "Chicago Blackhawks":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -238,6 +256,7 @@ export const TeamLogo = (props: props) => {
       case "Colorado Avalanche":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -249,6 +268,7 @@ export const TeamLogo = (props: props) => {
       case "Dallas Stars":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -260,6 +280,7 @@ export const TeamLogo = (props: props) => {
       case "Minnesota Wild":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -271,6 +292,7 @@ export const TeamLogo = (props: props) => {
       case "Nashville Predators":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -282,6 +304,7 @@ export const TeamLogo = (props: props) => {
       case "St. Louis Blues":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -293,6 +316,7 @@ export const TeamLogo = (props: props) => {
       case "Winnipeg Jets":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -304,6 +328,7 @@ export const TeamLogo = (props: props) => {
       case "Anaheim Ducks":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -315,6 +340,7 @@ export const TeamLogo = (props: props) => {
       case "Arizona Coyotes":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -326,6 +352,7 @@ export const TeamLogo = (props: props) => {
       case "Calgary Flames":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -337,6 +364,7 @@ export const TeamLogo = (props: props) => {
       case "Edmonton Oilers":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -348,6 +376,7 @@ export const TeamLogo = (props: props) => {
       case "Los Angeles Kings":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -359,6 +388,7 @@ export const TeamLogo = (props: props) => {
       case "San Jose Sharks":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -370,6 +400,7 @@ export const TeamLogo = (props: props) => {
       case "Vancouver Canucks":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -381,6 +412,7 @@ export const TeamLogo = (props: props) => {
       case "Vegas Golden Knights":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
@@ -392,6 +424,7 @@ export const TeamLogo = (props: props) => {
       case "Seattle Kraken":
         return (
           <img
+            className={props.classProp}
             width={props.width}
             height={props.height}
             style={props.style}
