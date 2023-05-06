@@ -16,7 +16,7 @@ const nextConfig = {
           './Document': './pages/_document',
           './TeamsProvider': './Context/TeamProvider',
           './Theme/ThemeProvider': './Context/Theme/ThemeProvider',
-          './Sidebar': './Components/Sidebar/Sidebar.tsx',
+          './Sidebar': './Components/Sidebar/Sidebar',
           './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar',
         },
         shared: {
