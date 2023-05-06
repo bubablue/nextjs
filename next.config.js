@@ -17,12 +17,12 @@ const nextConfig = {
           './UserSidebar': './Components/Sidebar/UserSidebar/UserSidebar',
         },
         shared: {
-          'react': {
+          react: {
             eager: true,
             singleton: true,
             requiredVersion: false,
           },
-          'react-dom': {
+          "react-dom": {
             eager: true,
             singleton: true,
             requiredVersion: false,
